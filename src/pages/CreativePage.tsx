@@ -1,6 +1,6 @@
 import { projects } from '../data/projects'
 import { Starburst } from '../components/Starburst'
-import { routeHref } from '../lib/paths'
+import { assetPath, routeHref } from '../lib/paths'
 
 const creativeServices = [
   { title: 'BRAND DESIGN', copy: 'Identity systems and art direction that make the brand recognizable before the logo even appears.', outputs: ['STRATEGY', 'IDENTITY', 'TYPOGRAPHY', 'GUIDELINES'] },
@@ -13,6 +13,81 @@ const creativeCases = [
   { id: 'kroma-era', focus: ['IDENTITY SYSTEM', 'CUSTOM TYPE', 'EDITORIAL DIRECTION'] },
   { id: 'pain', focus: ['ART DIRECTION', 'COVER DESIGN', 'PRINT LANGUAGE'] },
   { id: 'wesal', focus: ['DIGITAL ART DIRECTION', 'BILINGUAL UI', 'IMAGE DIRECTION'] },
+]
+
+const portfolioWork = [
+  {
+    title: 'SHOWREEL 2024',
+    category: 'MOTION / POST-PRODUCTION',
+    image: 'projects/creative/showreel-2024.jpg',
+    imageAlt: 'A montage of frames from motion graphics and video editing projects',
+    summary: 'A fast-cut collection of campaign films, branded sequences and visual effects shaped around rhythm, clarity and impact.',
+    focus: ['EDITING', 'MOTION DESIGN', 'VFX', 'SOUND DESIGN'],
+  },
+  {
+    title: 'AL-FUTTAIM',
+    category: 'CORPORATE REEL',
+    image: 'projects/creative/al-futtaim.jpg',
+    imageAlt: 'A frame from the Al-Futtaim corporate reel',
+    summary: 'A polished corporate edit that turns business moments into a confident, human and energetic visual narrative.',
+    focus: ['VIDEO EDITING', 'PACING', 'COLOR', 'TITLES'],
+  },
+  {
+    title: 'ARAMCO SAUDI',
+    category: 'BRAND FILM',
+    image: 'projects/creative/aramco-saudi.jpg',
+    imageAlt: 'A cinematic industrial frame from the Aramco Saudi film',
+    summary: 'Cinematic post-production for an industrial story, balancing people, scale and technology in one cohesive cut.',
+    focus: ['EDITING', 'COLOR GRADING', 'COMPOSITING'],
+  },
+  {
+    title: 'STRONG INDEPENDENT OM',
+    category: 'BRANDED CONTENT',
+    image: 'projects/creative/strong-independent.jpg',
+    imageAlt: 'A branded interview frame for Strong Independent OM',
+    summary: 'A personality-led format with a distinct title language, restrained motion and clean editorial pacing.',
+    focus: ['ART DIRECTION', 'EDITING', 'MOTION TITLES'],
+  },
+  {
+    title: 'WARA ALKAWALIS',
+    category: 'ENTERTAINMENT FORMAT',
+    image: 'projects/creative/wara-alkawalis.jpg',
+    imageAlt: 'A dark promotional portrait for Wara Alkawalis',
+    summary: 'A bold entertainment package built from character-led imagery, graphic cutouts and high-contrast framing.',
+    focus: ['KEY VISUAL', 'EDITING', 'SHOW PACKAGE'],
+  },
+  {
+    title: 'ABU LOKMA',
+    category: 'FOOD COMEDY SHOW',
+    image: 'projects/creative/abu-lokma.jpg',
+    imageAlt: 'A colorful key visual for the Abu Lokma food comedy show',
+    summary: 'A playful food-show identity with expressive Arabic lettering, warm color and a flexible episodic visual system.',
+    focus: ['SHOW IDENTITY', 'ARABIC TYPE', 'SOCIAL CUTS'],
+  },
+  {
+    title: 'ZEROTECH CAMPAIGN',
+    category: 'SOCIAL DESIGN',
+    image: 'projects/creative/zerotech-campaign.jpg',
+    imageAlt: 'A collection of Zerotech social media campaign designs',
+    summary: 'A broad social content system translating technical products into direct, high-impact campaign visuals.',
+    focus: ['CAMPAIGN DESIGN', 'COMPOSITING', 'CONTENT SYSTEM'],
+  },
+  {
+    title: 'HEALTHCARE & FMCG',
+    category: 'SOCIAL CAMPAIGNS',
+    image: 'projects/creative/healthcare-fmcg-campaign.jpg',
+    imageAlt: 'A grid of healthcare and FMCG social media designs',
+    summary: 'Product-first campaign art that keeps each message immediate while preserving a recognizable visual family.',
+    focus: ['SOCIAL DESIGN', 'PRODUCT ART', 'COPY LAYOUT'],
+  },
+  {
+    title: 'BIG MIND',
+    category: 'CAMPAIGN ART DIRECTION',
+    image: 'projects/creative/big-mind-campaign.jpg',
+    imageAlt: 'A vibrant orange campaign collage for Big Mind tea',
+    summary: 'A characterful campaign world combining bold Arabic headlines, product staging and a memorable color language.',
+    focus: ['ART DIRECTION', 'KEY VISUALS', 'ARABIC TYPOGRAPHY'],
+  },
 ]
 
 const creativeProcess = [
@@ -38,7 +113,7 @@ export function CreativePage() {
       </section>
 
       <nav className="page-jump-nav" aria-label="Creative page sections">
-        <span>EXPLORE</span><a href={routeHref('/design?section=services')}>SERVICES</a><a href={routeHref('/design?section=motion')}>MOTION</a><a href={routeHref('/design?section=visual-work')}>PROJECTS</a><a href={routeHref('/design?section=creative-process')}>PROCESS</a><a href={routeHref('/contact')}>START A PROJECT ↗</a>
+        <span>EXPLORE</span><a href={routeHref('/design?section=services')}>SERVICES</a><a href={routeHref('/design?section=motion')}>MOTION</a><a href={routeHref('/design?section=visual-work')}>SELECTED WORK</a><a href={routeHref('/design?section=brand-systems')}>BRAND SYSTEMS</a><a href={routeHref('/design?section=creative-process')}>PROCESS</a><a href={routeHref('/contact')}>START A PROJECT ↗</a>
       </nav>
 
       <section className="creative-services section-light" id="services">
@@ -62,8 +137,27 @@ export function CreativePage() {
         </div>
       </section>
 
-      <section className="visual-work section-light" id="visual-work">
-        <header className="subpage-section-head reveal"><span>VISUAL WORK</span><h2>SELECTED<br />DIRECTIONS.</h2></header>
+      <section className="portfolio-work section-dark" id="visual-work">
+        <header className="subpage-section-head reveal"><span>SELECTED WORK</span><h2>EDIT. MOVE.<br />DESIGN.</h2></header>
+        <p className="portfolio-work-intro reveal">A focused selection across post-production, motion graphics, campaign art direction and social design.</p>
+        <div className="portfolio-work-grid">
+          {portfolioWork.map((item, index) => (
+            <article className="portfolio-work-card reveal" key={item.title}>
+              <div className="portfolio-work-image">
+                <img src={assetPath(item.image)} alt={item.imageAlt} loading="lazy" />
+                <span>0{index + 1}</span>
+              </div>
+              <div className="portfolio-work-meta"><span>{item.category}</span><span>WAHAJ / CREATIVE</span></div>
+              <h3>{item.title}</h3>
+              <p>{item.summary}</p>
+              <ul className="creative-case-tags">{item.focus.map((focus) => <li key={focus}>{focus}</li>)}</ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="visual-work section-light" id="brand-systems">
+        <header className="subpage-section-head reveal"><span>BRAND &amp; DIGITAL</span><h2>SELECTED<br />SYSTEMS.</h2></header>
         <div className="visual-work-grid">
           {visualProjects.map((project) => (
             <article className="reveal" key={project.id}>
