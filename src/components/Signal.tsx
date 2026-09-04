@@ -8,7 +8,7 @@ const facts = [
 
 export function Signal() {
   return (
-    <section className="signal-section section-light" aria-label="WAHAJ in brief">
+    <section id="intro" className="signal-section section-light" aria-label="WAHAJ in brief">
       <div className="signal-statement reveal">
         <span>THE WAHAJ DIFFERENCE</span>
         <p>We don’t hand ideas from one department to another. Strategy, identity and technology move together—so the final experience feels like <em>one unmistakable brand.</em></p>

@@ -10,19 +10,19 @@ const capabilities = [
 
 const digitalCases = [
   {
-    id: 'zaman', number: '01', title: 'ZAMAN', type: 'BILINGUAL CORPORATE WEBSITE', image: assetPath('/projects/zaman.png'),
+    id: 'zaman', number: '01', title: 'ZAMAN', type: 'BILINGUAL CORPORATE WEBSITE', image: assetPath('/projects/zaman.webp'),
     summary: 'A clear corporate experience for industrial supplies and food materials, built to move confidently between Arabic and English.',
     build: 'Responsive product architecture, bilingual content direction, fast navigation and document-ready presentation.',
     stack: ['JavaScript', 'React', 'Vite', 'CSS', 'PDF.js'],
   },
   {
-    id: 'segybc', number: '02', title: 'SEGYBC', type: 'INSTITUTIONAL DIGITAL PLATFORM', image: assetPath('/projects/segybc.png'),
+    id: 'segybc', number: '02', title: 'SEGYBC', type: 'INSTITUTIONAL DIGITAL PLATFORM', image: assetPath('/projects/segybc.webp'),
     summary: 'A bilingual platform that communicates partnership, opportunity, leadership and council activity with institutional authority.',
     build: 'Structured content system, responsive interface, multilingual journeys, motion details and scalable routing.',
     stack: ['TypeScript', 'React', 'Vite', 'Tailwind CSS', 'Motion'],
   },
   {
-    id: 'wesal', number: '03', title: 'WESAL', type: 'LUXURY TRAVEL EXPERIENCE', image: assetPath('/projects/wesal.png'),
+    id: 'wesal', number: '03', title: 'WESAL', type: 'LUXURY TRAVEL EXPERIENCE', image: assetPath('/projects/wesal.webp'),
     summary: 'A cinematic bilingual travel website where the interface carries the pace, atmosphere and confidence of the journey.',
     build: 'Immersive art direction, bilingual layouts, fluid responsive behavior and a lightweight frontend delivery.',
     stack: ['HTML5', 'CSS3', 'JavaScript', 'Vite'],
@@ -80,7 +80,7 @@ export function DevelopmentPage() {
           {digitalCases.map((project) => (
             <article className="development-case reveal" id={project.id} key={project.id}>
               <header><span>{project.number}</span><div><h3>{project.title}</h3><p>{project.type}</p></div></header>
-              <div className="development-case-image"><img src={project.image} alt={`${project.title} project shown in English`} /></div>
+              <div className="development-case-image"><img src={project.image} alt={`${project.title} project interface`} loading="lazy" width="1280" height="800" /></div>
               <div className="development-case-detail">
                 <p className="case-lead">{project.summary}</p>
                 <div><span>WHAT WE BUILT</span><p>{project.build}</p></div>

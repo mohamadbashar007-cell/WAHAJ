@@ -12,7 +12,7 @@ export function Contact() {
       <a className="contact-link reveal" href={routeHref('/contact')} data-cursor="TALK">
         <span>LET'S TALK</span><i>↗</i><Starburst tone="dark" />
       </a>
-      <div className="contact-logo" aria-hidden="true"><img src={assetPath('/wahaj-logo-dark.png')} alt="" /></div>
+      <div className="contact-logo" aria-hidden="true"><img src={assetPath('/wahaj-logo-dark-optimized.png')} alt="" width="320" height="250" /></div>
     </section>
   )
 }

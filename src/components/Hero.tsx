@@ -1,46 +1,22 @@
-import { useEffect, useRef } from 'react'
 import { Starburst } from './Starburst'
-import { assetPath, routeHref } from '../lib/paths'
+import { useLanguage } from '../lib/language'
+import { routeHref } from '../lib/paths'
 
 export function Hero() {
-  const hero = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const el = hero.current
-    if (!el || matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const onMove = (event: PointerEvent) => {
-      const x = (event.clientX / innerWidth - 0.5) * 18
-      const y = (event.clientY / innerHeight - 0.5) * 18
-      el.style.setProperty('--hero-x', `${x}px`)
-      el.style.setProperty('--hero-y', `${y}px`)
-    }
-    addEventListener('pointermove', onMove, { passive: true })
-    return () => removeEventListener('pointermove', onMove)
-  }, [])
-
+  const { language } = useLanguage()
+  const ar = language === 'ar'
   return (
-    <section id="top" className="hero" ref={hero} aria-labelledby="hero-title">
-      <div className="hero-meta reveal">
-        <span>INDEPENDENT CREATIVE COMPANY</span>
-        <span>CAIRO / WORKING EVERYWHERE</span>
-      </div>
-      <h1 id="hero-title" className="hero-title">
-        <span className="hero-line line-one"><i>WE</i><i>MAKE</i></span>
-        <span className="hero-line line-two"><i>BRANDS</i></span>
-        <span className="hero-line line-three"><i>GLOW.</i><Starburst className="hero-burst" label="WAHAJ spark" /></span>
+    <section id="top" className="hero" aria-labelledby="hero-title">
+      <div className="hero-grid" aria-hidden="true" /><Starburst className="hero-burst" />
+      <div className="hero-meta reveal"><span>{ar ? 'شركة إبداعية مستقلة' : 'INDEPENDENT CREATIVE COMPANY'}</span><span>{ar ? 'القاهرة / نعمل في كل مكان' : 'CAIRO / WORKING EVERYWHERE'}</span></div>
+      <h1 id="hero-title" className="hero-title" aria-label={ar ? 'نصنع علامات تجارية متوهجة' : 'We make brands glow'}>
+        <span>{ar ? 'نصنع' : 'WE MAKE'}</span><span>{ar ? 'علامات لا تُنسى' : 'BRANDS'}</span><span className="glow">{ar ? 'تتوهج.' : 'GLOW.'}</span>
       </h1>
-      <a className="hero-feature" href={routeHref('/work')} data-cursor="VIEW" aria-label="View selected work">
-        <img src={assetPath('/projects/wesal.png')} alt="Wesal digital experience, a selected WAHAJ project" />
-        <span><b>FEATURED / 01</b><em>WESAL — BRAND + DIGITAL</em></span>
-        <i>↗</i>
-      </a>
       <div className="hero-bottom reveal">
-        <p>WE TURN CLEAR IDEAS INTO<br />VISIBLE, MEMORABLE EXPERIENCES.</p>
-        <a href="#work" className="scroll-link" data-cursor="SCROLL">
-          <span>SCROLL TO IGNITE</span><i>↓</i>
-        </a>
+        <p>{ar ? 'نجمع الاستراتيجية والتصميم والتقنية لنحوّل الأفكار الواضحة إلى علامات وتجارب رقمية مؤثرة.' : 'Strategy, design and technology come together to turn clear ideas into distinctive brands and useful digital experiences.'}</p>
+        <a href={routeHref('/work')} className="button button-yellow">{ar ? 'استعرض أعمالنا' : 'EXPLORE OUR WORK'} <span aria-hidden="true">↗</span></a>
       </div>
-      <span className="hero-index" aria-hidden="true">01</span>
+      <a href="#intro" className="scroll-cue">{ar ? 'مرّر للاستكشاف' : 'SCROLL TO EXPLORE'} <span aria-hidden="true">↓</span></a>
     </section>
   )
 }

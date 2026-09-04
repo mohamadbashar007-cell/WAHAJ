@@ -10,7 +10,7 @@ const creativeServices = [
 
 const portfolioWork = [
   {
-    title: 'SOCIAL MEDIA POSTS FOR INSTAGRAM',
+    title: 'VORTEX SOCIAL SERIES',
     category: 'SOCIAL MEDIA DESIGN',
     image: 'projects/design/social-media-instagram.png',
     imageAlt: 'Social media posts for Instagram project cover',
@@ -18,7 +18,7 @@ const portfolioWork = [
     focus: ['SOCIAL MEDIA', 'LAYOUT', 'ART DIRECTION'],
   },
   {
-    title: 'RETRO PROFILE COMPANY FOR VORTEX',
+    title: 'VORTEX RETRO PROFILE',
     category: 'COMPANY PROFILE / EDITORIAL',
     image: 'projects/design/vortex-retro-profile.png',
     imageAlt: 'Retro Vortex company profile project cover',
@@ -26,7 +26,7 @@ const portfolioWork = [
     focus: ['EDITORIAL DESIGN', 'ARABIC TYPE', 'LAYOUT'],
   },
   {
-    title: 'PAIN | A BOOK COVER DESIGN FOR UNIVERSITY',
+    title: 'PAIN',
     category: 'BOOK COVER / EDITORIAL DESIGN',
     image: 'projects/design/pain-book-cover.png',
     imageAlt: 'Pain book cover design project cover',
@@ -34,7 +34,7 @@ const portfolioWork = [
     focus: ['COVER DESIGN', 'EDITORIAL', 'TYPOGRAPHY'],
   },
   {
-    title: 'WESAL | LOGO IDENTITY',
+    title: 'WESAL IDENTITY',
     category: 'LOGO / BRAND IDENTITY',
     image: 'projects/design/wesal-logo-identity.png',
     imageAlt: 'Wesal logo identity project cover',
@@ -42,7 +42,7 @@ const portfolioWork = [
     focus: ['LOGO DESIGN', 'BRAND IDENTITY', 'ARABIC TYPE'],
   },
   {
-    title: 'KROMA ERA | CLOTHING BRAND LOGO IDENTITY',
+    title: 'KROMA ERA',
     category: 'FASHION / BRAND IDENTITY',
     image: 'projects/design/kroma-era.png',
     imageAlt: 'Kroma Era clothing brand identity project cover',
@@ -108,7 +108,7 @@ export function CreativePage() {
           {portfolioWork.map((item, index) => (
             <article className="portfolio-work-card reveal" key={item.title}>
               <div className="portfolio-work-image">
-                <img src={assetPath(item.image)} alt={item.imageAlt} loading="lazy" />
+                <img src={assetPath(item.image)} alt={item.imageAlt} loading="lazy" width="1280" height="800" />
                 <span>0{index + 1}</span>
               </div>
               <div className="portfolio-work-meta"><span>{item.category}</span><span>WAHAJ / CREATIVE</span></div>

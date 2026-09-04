@@ -1,29 +1,17 @@
 import type { Project } from '../data/projects'
+import { routeHref } from '../lib/paths'
 
-export function ProjectPreview({ project, index }: { project: Project; index: number }) {
-  const content = (
-    <>
-      <div className="project-heading">
-        <span className="project-number">({project.number})</span>
-        <div>
-          <h3>{project.title}</h3>
-          <p>{project.category}</p>
-        </div>
-        <span className="project-arrow" aria-hidden="true">{project.link ? '↗' : '—'}</span>
-      </div>
-      <div className="project-visual">
-        <img src={project.image} alt={project.imageAlt} loading={index > 0 ? 'lazy' : 'eager'} />
-        <span className="project-source">{project.source}{project.link ? ' ↗' : ''}</span>
-      </div>
-      <p className="project-summary">{project.summary}</p>
-    </>
-  )
-
+export function ProjectPreview({ project }: { project: Project; index?: number }) {
+  const internal = !project.link
+  const href = internal ? routeHref(`/work/${project.id}`) : project.link!
   return (
-    <article className={`project project-${index + 1} tone-${project.tone} reveal`}>
-      {project.link
-        ? <a href={project.link} target="_blank" rel="noreferrer" className="project-link" data-cursor="VIEW">{content}</a>
-        : <div className="project-link">{content}</div>}
+    <article className={`project-card tone-${project.tone} reveal`}>
+      <a href={href} target={internal ? undefined : '_blank'} rel={internal ? undefined : 'noreferrer'} className="project-card-link">
+        <div className="project-card-image"><img src={project.image} alt={project.imageAlt} loading="lazy" width="1280" height="800" /></div>
+        <div className="project-card-head"><span>{project.number}</span><div><h3>{project.title}</h3><p>{project.category}</p></div><i aria-hidden="true">{internal ? '→' : '↗'}</i></div>
+        <p className="project-summary">{project.summary}</p>
+        <strong className="project-action">{internal ? 'VIEW CASE STUDY' : 'VIEW LIVE SITE'} {internal ? '→' : '↗'}</strong>
+      </a>
     </article>
   )
 }
