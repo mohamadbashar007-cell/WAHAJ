@@ -8,10 +8,10 @@ export function Work() {
       <div className="section-intro reveal">
         <span className="eyebrow">01 / SELECTED WORK</span>
         <h2 id="work-title">WORK THAT<br />LEAVES A MARK.</h2>
-        <p>Brand systems, interfaces and digital experiences—built as one connected idea.</p>
+        <p>Brand systems, interfaces and digital experiences—built as one connected idea, with the thinking and craft visible in every frame.</p>
       </div>
       <div className="brand-axis reveal" aria-label="The WAHAJ creative process">
-        <div className="brand-axis-logo"><img src={assetPath('/wahaj-logo.png')} alt="WAHAJ official logo" /></div>
+        <div className="brand-axis-logo"><img src={assetPath('/wahaj-logo-dark.png')} alt="WAHAJ official logo" /></div>
         <div className="brand-axis-flow">
           <span>IDEA</span><i>→</i><span>SPARK</span><i>→</i><span>ENERGY</span><i>→</i><strong>IMPACT</strong>
         </div>

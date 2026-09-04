@@ -7,6 +7,7 @@ import { Footer } from './components/Footer'
 import { Hero } from './components/Hero'
 import { Nav } from './components/Nav'
 import { Services } from './components/Services'
+import { Signal } from './components/Signal'
 import { Starburst } from './components/Starburst'
 import { Work } from './components/Work'
 import { ContactPage } from './pages/ContactPage'
@@ -102,10 +103,11 @@ function App() {
         <div className="marquee" aria-hidden="true">
           <div>
             {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, index) => (
-              <span className="marquee-item" key={`${item}-${index}`}>{item}<Starburst /></span>
+              <span className="marquee-item" key={`${item}-${index}`}>{item}<Starburst tone="dark" /></span>
             ))}
           </div>
         </div>
+        <Signal />
         <Work />
         <Services />
         <DesignCode />

@@ -10,9 +10,9 @@ export function Contact() {
       </div>
       <h2 id="contact-title" className="reveal">GOT SOMETHING<br />WORTH <span>MAKING?</span></h2>
       <a className="contact-link reveal" href={routeHref('/contact')} data-cursor="TALK">
-        <span>LET'S TALK</span><i>↗</i><Starburst />
+        <span>LET'S TALK</span><i>↗</i><Starburst tone="dark" />
       </a>
-      <div className="contact-logo" aria-hidden="true"><img src={assetPath('/wahaj-logo.png')} alt="" /></div>
+      <div className="contact-logo" aria-hidden="true"><img src={assetPath('/wahaj-logo-dark.png')} alt="" /></div>
     </section>
   )
 }

@@ -13,13 +13,13 @@ const digitalCases = [
     id: 'zaman', number: '01', title: 'ZAMAN', type: 'BILINGUAL CORPORATE WEBSITE', image: assetPath('/projects/zaman.png'),
     summary: 'A clear corporate experience for industrial supplies and food materials, built to move confidently between Arabic and English.',
     build: 'Responsive product architecture, bilingual content direction, fast navigation and document-ready presentation.',
-    stack: ['JavaScript', 'React', 'Vite', 'CSS', 'PDF.js'], link: 'https://zaman-eg.com',
+    stack: ['JavaScript', 'React', 'Vite', 'CSS', 'PDF.js'],
   },
   {
     id: 'segybc', number: '02', title: 'SEGYBC', type: 'INSTITUTIONAL DIGITAL PLATFORM', image: assetPath('/projects/segybc.png'),
     summary: 'A bilingual platform that communicates partnership, opportunity, leadership and council activity with institutional authority.',
     build: 'Structured content system, responsive interface, multilingual journeys, motion details and scalable routing.',
-    stack: ['TypeScript', 'React', 'Vite', 'Tailwind CSS', 'Motion'], link: 'https://segybc.com',
+    stack: ['TypeScript', 'React', 'Vite', 'Tailwind CSS', 'Motion'],
   },
   {
     id: 'wesal', number: '03', title: 'WESAL', type: 'LUXURY TRAVEL EXPERIENCE', image: assetPath('/projects/wesal.png'),
@@ -79,7 +79,7 @@ export function DevelopmentPage() {
         <div className="development-case-list">
           {digitalCases.map((project) => (
             <article className="development-case reveal" id={project.id} key={project.id}>
-              <header><span>{project.number}</span><div><h3>{project.title}</h3><p>{project.type}</p></div>{project.link && <a href={project.link} target="_blank" rel="noreferrer">VIEW LIVE ↗</a>}</header>
+              <header><span>{project.number}</span><div><h3>{project.title}</h3><p>{project.type}</p></div></header>
               <div className="development-case-image"><img src={project.image} alt={`${project.title} project shown in English`} /></div>
               <div className="development-case-detail">
                 <p className="case-lead">{project.summary}</p>
