@@ -1,4 +1,7 @@
-import { Starburst } from '../components/Starburst'
+import { Link } from '../components/Link'
+import { ProjectLink } from '../components/ProjectLink'
+import { useLanguage } from '../lib/language'
+import { ProjectImage } from '../components/ProjectImage'
 import { assetPath, routeHref } from '../lib/paths'
 
 const capabilities = [
@@ -50,55 +53,56 @@ const process = [
 ]
 
 export function DevelopmentPage() {
+  const { t } = useLanguage()
   return (
     <main className="inner-page development-page">
       <section className="page-hero development-hero">
-        <div className="page-hero-meta reveal"><span>02 / DEVELOPMENT</span><span>WEBSITES / APPS / PLATFORMS</span></div>
-        <h1 className="reveal">WE BUILD<br />THE <span>SYSTEM</span><br />BEHIND THE IMPACT.</h1>
-        <p className="page-hero-statement reveal">Strategy, interface and engineering moving as one—from the first user flow to the final interaction.</p>
-        <Starburst className="page-hero-mark" />
+        <div className="page-hero-meta reveal"><span>{t("02 / DEVELOPMENT")}</span><span>{t("WEBSITES / APPS / PLATFORMS")}</span></div>
+        <h1 className="reveal">{t("DIGITAL.")}<br />{t("BUILT TO")}<br /><span>{t("WORK.")}</span></h1>
+        <p className="page-hero-statement reveal">{t("Strategy, interface and engineering moving as one—from the first user flow to the final interaction.")}</p>
+        <div className="page-hero-logo development-logo" aria-hidden="true" />
       </section>
 
-      <nav className="page-jump-nav" aria-label="Development page sections">
-        <span>EXPLORE</span><a href={routeHref('/development?section=capabilities')}>CAPABILITIES</a><a href={routeHref('/development?section=digital-work')}>PROJECTS</a><a href={routeHref('/development?section=process')}>PROCESS</a><a href={routeHref('/contact')}>START A PROJECT ↗</a>
+      <nav className="page-jump-nav" aria-label={t("Development page sections")}>
+        <span>{t("EXPLORE")}</span><Link href={routeHref('/development?section=capabilities')}>{t("CAPABILITIES")}</Link><Link href={routeHref('/development?section=digital-work')}>{t("PROJECTS")}</Link><Link href={routeHref('/development?section=process')}>{t("PROCESS")}</Link><Link href={routeHref('/contact')}>{t("START A PROJECT ↗")}</Link>
       </nav>
 
       <section className="capability-section section-light" id="capabilities">
-        <header className="subpage-section-head reveal"><span>WHAT WE BUILD</span><h2>DIGITAL THAT<br />DOES THE WORK.</h2></header>
+        <header className="subpage-section-head reveal"><span>{t("WHAT WE BUILD")}</span><h2>{t("DIGITAL THAT")}<br />{t("DOES THE WORK.")}</h2></header>
         <div className="capability-grid">
           {capabilities.map(([number, title, copy]) => (
             <article className="capability-card reveal" key={number}>
-              <span>{number}</span><h3>{title}</h3><p>{copy}</p>
+              <span>{number}</span><h3>{t(title)}</h3><p>{t(copy)}</p>
             </article>
           ))}
         </div>
       </section>
 
       <section className="development-projects section-dark" id="digital-work">
-        <header className="subpage-section-head reveal"><span>BUILT & SHIPPED</span><h2>FIVE DIGITAL<br />EXPERIENCES.</h2></header>
+        <header className="subpage-section-head reveal"><span>{t("BUILT & SHIPPED")}</span><h2>{t("FIVE DIGITAL")}<br />{t("EXPERIENCES.")}</h2></header>
         <div className="development-case-list">
           {digitalCases.map((project) => (
             <article className="development-case reveal" id={project.id} key={project.id}>
-              <header><span>{project.number}</span><div><h3>{project.title}</h3><p>{project.type}</p></div></header>
-              <div className="development-case-image"><img src={project.image} alt={`${project.title} project interface`} loading="lazy" width="1280" height="800" /></div>
+              <ProjectLink id={['zaman', 'segybc', 'wesal'].includes(project.id) ? project.id : undefined}><header><span>{project.number}</span><div><h3>{project.title}</h3><p>{t(project.type)}</p></div></header>
+              <div className="development-case-image"><ProjectImage src={project.image} alt={`${project.title} project interface`} /></div>
               <div className="development-case-detail">
-                <p className="case-lead">{project.summary}</p>
-                <div><span>WHAT WE BUILT</span><p>{project.build}</p></div>
-                <div className="case-stack"><span>LANGUAGES & STACK</span><ul>{project.stack.map((item) => <li key={item}>{item}</li>)}</ul></div>
-              </div>
+                <p className="case-lead">{t(project.summary)}</p>
+                <div><span>{t("WHAT WE BUILT")}</span><p>{t(project.build)}</p></div>
+                <div className="case-stack"><span>{t("LANGUAGES & STACK")}</span><ul>{project.stack.map((item) => <li key={item}>{item}</li>)}</ul></div>
+              </div></ProjectLink>
             </article>
           ))}
         </div>
       </section>
 
       <section className="process-section section-light" id="process">
-        <header className="subpage-section-head reveal"><span>THE PROCESS</span><h2>FROM AMBITION<br />TO RELEASE.</h2></header>
+        <header className="subpage-section-head reveal"><span>{t("THE PROCESS")}</span><h2>{t("FROM AMBITION")}<br />{t("TO RELEASE.")}</h2></header>
         <div className="process-track process-track-five">
-          {process.map(([title, copy], index) => <article className="reveal" key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{copy}</p></article>)}
+          {process.map(([title, copy], index) => <article className="reveal" key={t(title)}><span>0{index + 1}</span><h3>{t(title)}</h3><p>{t(copy)}</p></article>)}
         </div>
       </section>
 
-      <section className="page-next page-next-yellow reveal"><span>HAVE A DIGITAL PRODUCT IN MIND?</span><a href={routeHref('/contact')}>START THE CONVERSATION <i>↗</i></a></section>
+      <section className="page-next page-next-yellow reveal"><span>{t("HAVE A DIGITAL PRODUCT IN MIND?")}</span><Link href={routeHref('/contact')}>{t("START THE CONVERSATION")}<i>↗</i></Link></section>
     </main>
   )
 }

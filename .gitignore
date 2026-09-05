@@ -7,3 +7,6 @@ Asset 88@3x.png
 Asset 91@3x.png
 WhatsApp Image*.jpeg
 
+
+# Local visual QA and Lighthouse reports
+artifacts/

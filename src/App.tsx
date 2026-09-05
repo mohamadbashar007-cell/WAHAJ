@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { Link } from './components/Link'
+﻿import { useEffect, useState } from 'react'
 import { About } from './components/About'
 import { Contact } from './components/Contact'
 import { Cursor } from './components/Cursor'
@@ -12,83 +13,47 @@ import { Work } from './components/Work'
 import { ContactPage } from './pages/ContactPage'
 import { CreativePage } from './pages/CreativePage'
 import { DevelopmentPage } from './pages/DevelopmentPage'
-import { WorkPage } from './pages/WorkPage'
 import { CaseStudyPage } from './pages/CaseStudyPage'
 import { LanguageContext, type Language } from './lib/language'
-
-const readRoute = () => `${window.location.pathname}${window.location.search}`
+import { useRouter } from './lib/router'
+import { useSeo } from './lib/seo'
 
 function App() {
-  const [route, setRoute] = useState(readRoute)
-  const [language, setLanguage] = useState<Language>(() => localStorage.getItem('wahaj-language') === 'ar' ? 'ar' : 'en')
-  const [path, query = ''] = route.split('?')
-
+  const { route, path, transitioning } = useRouter()
+  const [language, setLanguage] = useState<Language>(() => location.pathname.startsWith('/ar') ? 'ar' : 'en')
   useEffect(() => {
-    const handleRoute = () => setRoute(readRoute())
-    const handleClick = (event: MouseEvent) => {
-      const anchor = (event.target as HTMLElement).closest<HTMLAnchorElement>('a[href]')
-      if (!anchor || anchor.target === '_blank' || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
-      const url = new URL(anchor.href, window.location.href)
-      if (url.origin !== window.location.origin || (url.hash && url.pathname === window.location.pathname)) return
-      event.preventDefault()
-      window.history.pushState({}, '', `${url.pathname}${url.search}${url.hash}`)
-      handleRoute()
-    }
-    window.addEventListener('popstate', handleRoute)
-    document.addEventListener('click', handleClick)
-    return () => { window.removeEventListener('popstate', handleRoute); document.removeEventListener('click', handleClick) }
-  }, [])
-
-  useEffect(() => {
-    const reveal = new IntersectionObserver((entries) => entries.forEach((entry) => {
-      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); reveal.unobserve(entry.target) }
-    }), { threshold: 0.08 })
-    const frame = requestAnimationFrame(() => document.querySelectorAll('.reveal').forEach((element) => reveal.observe(element)))
-    return () => { cancelAnimationFrame(frame); reveal.disconnect() }
+    const next = location.pathname.startsWith('/ar') ? 'ar' : 'en'
+    setLanguage(next); document.documentElement.lang = next; document.documentElement.dir = next === 'ar' ? 'rtl' : 'ltr'
+    try { localStorage.setItem('wahaj-language', next) } catch { /* Storage is optional. */ }
   }, [route])
-
+  useSeo(path, language)
   useEffect(() => {
-    const section = new URLSearchParams(query).get('section')
-    const frame = requestAnimationFrame(() => section ? document.getElementById(section)?.scrollIntoView({ block: 'start' }) : window.scrollTo({ top: 0 }))
-    return () => cancelAnimationFrame(frame)
-  }, [route, query])
-
-  useEffect(() => {
-    document.documentElement.lang = language
-    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
-    localStorage.setItem('wahaj-language', language)
-    const titles: Record<string, string> = {
-      '/': language === 'ar' ? 'وهج — استراتيجية × تصميم × تقنية' : 'WAHAJ — Strategy × Design × Technology',
-      '/work': language === 'ar' ? 'أعمالنا — وهج' : 'Selected Work — WAHAJ',
-      '/development': language === 'ar' ? 'التطوير الرقمي — وهج' : 'Digital Development — WAHAJ',
-      '/design': language === 'ar' ? 'التصميم والموشن — وهج' : 'Design + Motion — WAHAJ',
-      '/contact': language === 'ar' ? 'ابدأ مشروعاً — وهج' : 'Start a Project — WAHAJ',
-      '/privacy': language === 'ar' ? 'سياسة الخصوصية — وهج' : 'Privacy — WAHAJ',
-    }
-    document.title = path.startsWith('/work/') ? `${path.split('/').pop()?.toUpperCase()} — WAHAJ` : titles[path] ?? titles['/']
-    const description = language === 'ar' ? 'وهج شركة إبداعية مستقلة تجمع بين الاستراتيجية والتصميم والتقنية.' : 'WAHAJ is an independent creative company combining strategy, design and technology.'
-    const title = document.title
-    document.querySelector('meta[name="description"]')?.setAttribute('content', description)
-    document.querySelector('meta[property="og:title"]')?.setAttribute('content', title)
-    document.querySelector('meta[property="og:description"]')?.setAttribute('content', description)
-    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', title)
-    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', description)
-    document.querySelector('link[rel="canonical"]')?.setAttribute('href', `${window.location.origin}${path}`)
-  }, [path, language])
-
+    const reveal = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); reveal.unobserve(entry.target) }
+    }), { threshold: 0.04 })
+    document.querySelectorAll('.reveal').forEach(element => reveal.observe(element))
+    return () => reveal.disconnect()
+  }, [route, language])
+  const ar = language === 'ar'
   const projectId = path.match(/^\/work\/([^/]+)$/)?.[1]
   const page = projectId ? <CaseStudyPage projectId={projectId} />
-    : path === '/work' ? <WorkPage />
     : path === '/development' ? <DevelopmentPage />
     : path === '/design' ? <CreativePage />
     : path === '/contact' ? <ContactPage />
-    : path === '/privacy' ? <main className="inner-page simple-page"><section><span className="eyebrow">PRIVACY</span><h1>{language === 'ar' ? 'سياسة الخصوصية' : 'PRIVACY POLICY'}</h1><p>{language === 'ar' ? 'نستخدم المعلومات التي ترسلها عبر نموذج التواصل للرد على طلبك فقط، ولا نبيع بياناتك أو نشاركها لأغراض تسويقية.' : 'We use the information submitted through the contact form only to respond to your enquiry. We do not sell it or share it for third-party marketing.'}</p></section></main> : null
-
-  const shell = page
-    ? <><a className="skip-link" href="#main-content">{language === 'ar' ? 'انتقل إلى المحتوى' : 'Skip to content'}</a><Cursor /><Nav /><div id="main-content" className="page-transition" key={path}>{page}</div><Footer /></>
-    : <><a className="skip-link" href="#main-content">{language === 'ar' ? 'انتقل إلى المحتوى' : 'Skip to content'}</a><Cursor /><Nav /><main id="main-content" className="page-transition"><Hero /><Signal /><Work /><Services /><DesignCode /><About /><Contact /></main><Footer /></>
-
-  return <LanguageContext.Provider value={{ language, toggleLanguage: () => setLanguage((value) => value === 'en' ? 'ar' : 'en') }}>{shell}</LanguageContext.Provider>
+    : path === '/privacy' ? <main className="inner-page simple-page"><section><span className="eyebrow">{ar ? 'الخصوصية' : 'PRIVACY'}</span><h1>{ar ? 'سياسة الخصوصية' : 'PRIVACY POLICY'}</h1><p>{ar ? 'نستخدم اسمك وبريدك وتفاصيل مشروعك للرد على طلبك ومناقشة التعاون. لا نبيع بياناتك ولا نستخدمها للتسويق لدى جهات أخرى.' : 'We use your name, email and project details to respond to your enquiry and discuss working together. We do not sell your information or use it for third-party marketing.'}</p><p>{ar ? 'عند تفعيل خدمة النماذج، تعالج الخدمة بيانات الطلب لإيصالها إلى وهج. لا ترسل معلومات حساسة أو كلمات مرور. نحتفظ بتفضيل اللغة على جهازك فقط. يمكنك طلب تصحيح بياناتك أو حذفها عبر صفحة التواصل.' : 'When a form service is connected, it processes the enquiry to deliver it to WAHAJ. Please do not include sensitive information or passwords. Your language preference is stored only on your device. Contact us to request correction or deletion of your enquiry.'}</p><Link className="button button-yellow" href="/contact">{ar ? 'تواصل معنا' : 'CONTACT US'} ↗</Link></section></main>
+    : path === '/' ? <main><Hero /><Signal /><Work /><Services /><DesignCode /><About /><Contact /></main>
+    : <main className="simple-page"><section><span className="eyebrow">404</span><h1>{ar ? 'الصفحة غير موجودة' : 'PAGE NOT FOUND'}</h1><p>{ar ? 'قد يكون الرابط تغير. اكتشف أعمالنا من الصفحة الرئيسية.' : 'This link may have moved. Explore our projects from the homepage.'}</p><Link className="button button-yellow" href="/">{ar ? 'الرئيسية' : 'BACK TO HOME'} ↗</Link></section></main>
+  const toggleLanguage = () => {
+    const next = ar ? 'en' : 'ar'
+    const url = new URL(location.href)
+    url.pathname = next === 'ar' ? `/ar${path === '/' ? '' : path}` : path
+    history.replaceState({ ...history.state, scrollY: window.scrollY }, '', url)
+    setLanguage(next); window.dispatchEvent(new PopStateEvent('popstate'))
+  }
+  return <LanguageContext.Provider value={{ language, toggleLanguage }}>
+    <Link className="skip-link" href="#main-content">{ar ? 'انتقل إلى المحتوى' : 'Skip to content'}</Link><Cursor /><Nav />
+    <div id="main-content" tabIndex={-1} className={`page-transition${transitioning ? ' is-transitioning' : ''}`} key={path}>{page}</div><Footer />
+    <span className="sr-only" role="status" aria-live="polite">{document.title}</span>
+  </LanguageContext.Provider>
 }
-
 export default App

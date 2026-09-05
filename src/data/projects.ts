@@ -5,6 +5,9 @@ export type Project = {
   number: string
   title: string
   category: string
+  summaryAr: string
+  categoryAr: string
+  imageAltAr: string
   summary: string
   image: string
   imageAlt: string
@@ -17,6 +20,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: 'wesal',
+    summaryAr: "تجربة سفر ثنائية اللغة تستلهم دفء الرحلة وحركتها والطريق الممتد أمامنا.", categoryAr: "هوية بصرية / تجربة رقمية", imageAltAr: "واجهة موقع وصال للسفر أمام طريق جبلي وقت الغروب",
     number: '01',
     title: 'WESAL',
     category: 'BRAND IDENTITY / DIGITAL EXPERIENCE',
@@ -29,6 +33,7 @@ export const projects: Project[] = [
   },
   {
     id: 'kroma-era',
+    summaryAr: "هوية أزياء تجمع الحنين المعاصر والخطوط التعبيرية وإيقاع التصميم التحريري.", categoryAr: "هوية بصرية / أزياء", imageAltAr: "هوية كرومـا إيرا للأزياء مع كولاج تحريري وتصميم طباعي",
     number: '02',
     title: 'KROMA ERA',
     category: 'BRAND IDENTITY / FASHION',
@@ -41,6 +46,7 @@ export const projects: Project[] = [
   },
   {
     id: 'zaman',
+    summaryAr: "موقع مؤسسي ثنائي اللغة يعرض المستلزمات الصناعية والمواد الغذائية بوضوح.", categoryAr: "موقع مؤسسي / تطوير", imageAltAr: "واجهة موقع زمان المؤسسي مع صورة مستودع صناعي",
     number: '03',
     title: 'ZAMAN',
     category: 'CORPORATE WEB / DEVELOPMENT',
@@ -54,6 +60,7 @@ export const projects: Project[] = [
   },
   {
     id: 'pain',
+    summaryAr: "دراسة جامعية لغلاف كتاب تحوّل شعوراً داخلياً إلى تكوين بصري مركز.", categoryAr: "تصميم تحريري / إخراج فني", imageAltAr: "غلاف كتاب PAIN بوجه نحتي وعنوان أحمر",
     number: '04',
     title: 'PAIN',
     category: 'EDITORIAL DESIGN / ART DIRECTION',
@@ -66,6 +73,7 @@ export const projects: Project[] = [
   },
   {
     id: 'segybc',
+    summaryAr: "منصة مؤسسية ثنائية اللغة تعرض الشراكة الاقتصادية والفرص وأنشطة المجلس.", categoryAr: "موقع مؤسسي / تطوير", imageAltAr: "موقع مجلس الأعمال السوري المصري ثنائي اللغة",
     number: '05',
     title: 'SEGYBC',
     category: 'INSTITUTIONAL WEB / DEVELOPMENT',

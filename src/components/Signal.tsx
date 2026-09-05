@@ -1,3 +1,5 @@
+import { Link } from './Link'
+import { useLanguage } from '../lib/language'
 import { routeHref } from '../lib/paths'
 
 const facts = [
@@ -7,15 +9,16 @@ const facts = [
 ]
 
 export function Signal() {
+  const { t } = useLanguage()
   return (
-    <section id="intro" className="signal-section section-light" aria-label="WAHAJ in brief">
+    <section id="intro" className="signal-section section-light" aria-label={t("WAHAJ in brief")}>
       <div className="signal-statement reveal">
-        <span>THE WAHAJ DIFFERENCE</span>
-        <p>We don’t hand ideas from one department to another. Strategy, identity and technology move together—so the final experience feels like <em>one unmistakable brand.</em></p>
-        <a href={routeHref('/work')}>EXPLORE ALL WORK <i>↗</i></a>
+        <span>{t("THE WAHAJ DIFFERENCE")}</span>
+        <p>{t("We don’t hand ideas from one department to another. Strategy, identity and technology move together—so the final experience feels like")}<em>{t("one unmistakable brand.")}</em></p>
+        <Link href={routeHref('/#work')}>{t("EXPLORE ALL WORK")}<i>↗</i></Link>
       </div>
       <div className="signal-facts reveal">
-        {facts.map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}
+        {facts.map(([value, label]) => <div key={t(label)}><strong>{t(value)}</strong><span>{t(label)}</span></div>)}
       </div>
     </section>
   )
