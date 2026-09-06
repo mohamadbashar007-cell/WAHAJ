@@ -12,7 +12,6 @@ import { Work } from './components/Work'
 import { ContactPage } from './pages/ContactPage'
 import { CreativePage } from './pages/CreativePage'
 import { DevelopmentPage } from './pages/DevelopmentPage'
-import { WorkPage } from './pages/WorkPage'
 
 const marqueeItems = ['STRATEGY', 'IDENTITY', 'INTERFACE', 'CODE', 'IMPACT']
 
@@ -24,10 +23,13 @@ function App() {
 
   useEffect(() => {
     const handleHashChange = () => {
-      if (window.location.hash.startsWith('#/')) setRoute(readRoute())
+      if (window.location.hash === '#/work') {
+        window.location.replace('#/?section=work')
+      } else if (window.location.hash.startsWith('#/')) setRoute(readRoute())
       else if (window.location.hash === '#work') setRoute('/')
     }
     window.addEventListener('hashchange', handleHashChange)
+    handleHashChange()
     return () => window.removeEventListener('hashchange', handleHashChange)
   }, [])
 
@@ -62,7 +64,6 @@ function App() {
   useEffect(() => {
     const titles: Record<string, string> = {
       '/': 'WAHAJ — Design × Code',
-      '/work': 'Selected Work — WAHAJ',
       '/development': 'Digital Development — WAHAJ',
       '/design': 'Design, Editing & Motion — WAHAJ',
       '/contact': 'Start a Project — WAHAJ',
@@ -70,10 +71,8 @@ function App() {
     document.title = titles[path] ?? titles['/']
   }, [path])
 
-  const page = path === '/work'
-    ? <WorkPage />
-    : path === '/development'
-      ? <DevelopmentPage />
+  const page = path === '/development'
+    ? <DevelopmentPage />
       : path === '/design'
         ? <CreativePage />
         : path === '/contact'
@@ -102,7 +101,7 @@ function App() {
         <div className="marquee" aria-hidden="true">
           <div>
             {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, index) => (
-              <span className="marquee-item" key={`${item}-${index}`}>{item}<Starburst /></span>
+              <span className="marquee-item" key={`${item}-${index}`}>{item}<Starburst tone="dark" /></span>
             ))}
           </div>
         </div>

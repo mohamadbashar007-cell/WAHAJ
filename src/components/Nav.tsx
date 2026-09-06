@@ -3,7 +3,7 @@ import { Starburst } from './Starburst'
 import { assetPath, routeHref } from '../lib/paths'
 
 const links = [
-  ['WORK', routeHref('/work')],
+  ['WORK', routeHref('/?section=work')],
   ['DEVELOPMENT', routeHref('/development')],
   ['DESIGN + MOTION', routeHref('/design')],
 ]
