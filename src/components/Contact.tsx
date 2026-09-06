@@ -1,20 +1,18 @@
-import { Link } from './Link'
-import { useLanguage } from '../lib/language'
 import { Starburst } from './Starburst'
-import { routeHref } from '../lib/paths'
+import { assetPath, routeHref } from '../lib/paths'
 
 export function Contact() {
-  const { t } = useLanguage()
   return (
     <section id="contact" className="contact-section" aria-labelledby="contact-title">
       <div className="contact-meta reveal">
-        <span>{t("04 / YOUR TURN")}</span>
-        <span>{t("AVAILABLE FOR SELECT PROJECTS")}</span>
+        <span>04 / YOUR TURN</span>
+        <span>AVAILABLE FOR SELECT PROJECTS</span>
       </div>
-      <h2 id="contact-title" className="reveal">{t("YOUR NEXT IDEA.")}<br /><span>{t("STARTS HERE.")}</span></h2>
-      <Link className="contact-link reveal" href={routeHref('/contact')} data-cursor="TALK">
-        <span>{t("LET'S TALK")}</span><i>↗</i><Starburst tone="dark" />
-      </Link>
+      <h2 id="contact-title" className="reveal">GOT SOMETHING<br />WORTH <span>MAKING?</span></h2>
+      <a className="contact-link reveal" href={routeHref('/contact')} data-cursor="TALK">
+        <span>LET'S TALK</span><i>↗</i><Starburst tone="dark" />
+      </a>
+      <div className="contact-logo" aria-hidden="true"><img src={assetPath('/wahaj-logo-dark.png')} alt="" /></div>
     </section>
   )
 }

@@ -1,7 +1,3 @@
-import { Link } from '../components/Link'
-import { ProjectLink } from '../components/ProjectLink'
-import { useLanguage } from '../lib/language'
-import { ProjectImage } from '../components/ProjectImage'
 import { Starburst } from '../components/Starburst'
 import { assetPath, routeHref } from '../lib/paths'
 
@@ -14,7 +10,7 @@ const creativeServices = [
 
 const portfolioWork = [
   {
-    title: 'VORTEX SOCIAL SERIES',
+    title: 'SOCIAL MEDIA POSTS FOR INSTAGRAM',
     category: 'SOCIAL MEDIA DESIGN',
     image: 'projects/design/social-media-instagram.png',
     imageAlt: 'Social media posts for Instagram project cover',
@@ -22,7 +18,7 @@ const portfolioWork = [
     focus: ['SOCIAL MEDIA', 'LAYOUT', 'ART DIRECTION'],
   },
   {
-    title: 'VORTEX RETRO PROFILE',
+    title: 'RETRO PROFILE COMPANY FOR VORTEX',
     category: 'COMPANY PROFILE / EDITORIAL',
     image: 'projects/design/vortex-retro-profile.png',
     imageAlt: 'Retro Vortex company profile project cover',
@@ -30,7 +26,7 @@ const portfolioWork = [
     focus: ['EDITORIAL DESIGN', 'ARABIC TYPE', 'LAYOUT'],
   },
   {
-    title: 'PAIN',
+    title: 'PAIN | A BOOK COVER DESIGN FOR UNIVERSITY',
     category: 'BOOK COVER / EDITORIAL DESIGN',
     image: 'projects/design/pain-book-cover.png',
     imageAlt: 'Pain book cover design project cover',
@@ -38,7 +34,7 @@ const portfolioWork = [
     focus: ['COVER DESIGN', 'EDITORIAL', 'TYPOGRAPHY'],
   },
   {
-    title: 'WESAL IDENTITY',
+    title: 'WESAL | LOGO IDENTITY',
     category: 'LOGO / BRAND IDENTITY',
     image: 'projects/design/wesal-logo-identity.png',
     imageAlt: 'Wesal logo identity project cover',
@@ -46,7 +42,7 @@ const portfolioWork = [
     focus: ['LOGO DESIGN', 'BRAND IDENTITY', 'ARABIC TYPE'],
   },
   {
-    title: 'KROMA ERA',
+    title: 'KROMA ERA | CLOTHING BRAND LOGO IDENTITY',
     category: 'FASHION / BRAND IDENTITY',
     image: 'projects/design/kroma-era.png',
     imageAlt: 'Kroma Era clothing brand identity project cover',
@@ -71,69 +67,67 @@ const creativeProcess = [
 ]
 
 export function CreativePage() {
-  const { t } = useLanguage()
   return (
     <main className="inner-page creative-page">
       <section className="page-hero creative-hero">
-        <div className="page-hero-meta reveal"><span>{t("03 / CREATIVE")}</span><span>{t("DESIGN / EDIT / MOTION")}</span></div>
-        <h1 className="reveal">{t("MAKE IT")}<br /><span>{t("VISIBLE.")}</span><br />{t("MAKE IT MOVE.")}</h1>
+        <div className="page-hero-meta reveal"><span>03 / CREATIVE</span><span>DESIGN / EDIT / MOTION</span></div>
+        <h1 className="reveal">MAKE IT<br /><span>VISIBLE.</span><br />MAKE IT MOVE.</h1>
         <Starburst className="page-hero-mark" />
-        <div className="page-hero-logo creative-logo" aria-hidden="true" />
-        <div className="kinetic-words" aria-hidden="true"><span>{t("DESIGN")}</span><span>{t("EDIT")}</span><span>{t("MOTION")}</span></div>
+        <div className="kinetic-words" aria-hidden="true"><span>DESIGN</span><span>EDIT</span><span>MOTION</span></div>
       </section>
 
-      <nav className="page-jump-nav" aria-label={t("Creative page sections")}>
-        <span>{t("EXPLORE")}</span><Link href={routeHref('/design?section=services')}>{t("SERVICES")}</Link><Link href={routeHref('/design?section=motion')}>{t("MOTION")}</Link><Link href={routeHref('/design?section=visual-work')}>{t("SELECTED WORK")}</Link><Link href={routeHref('/design?section=creative-process')}>{t("PROCESS")}</Link><Link href={routeHref('/contact')}>{t("START A PROJECT ↗")}</Link>
+      <nav className="page-jump-nav" aria-label="Creative page sections">
+        <span>EXPLORE</span><a href={routeHref('/design?section=services')}>SERVICES</a><a href={routeHref('/design?section=motion')}>MOTION</a><a href={routeHref('/design?section=visual-work')}>SELECTED WORK</a><a href={routeHref('/design?section=creative-process')}>PROCESS</a><a href={routeHref('/contact')}>START A PROJECT ↗</a>
       </nav>
 
       <section className="creative-services section-light" id="services">
-        <header className="subpage-section-head reveal"><span>{t("WHAT WE SHAPE")}</span><h2>{t("ONE IDEA.")}<br />{t("EVERY FORMAT.")}</h2></header>
+        <header className="subpage-section-head reveal"><span>WHAT WE SHAPE</span><h2>ONE IDEA.<br />EVERY FORMAT.</h2></header>
         <div className="creative-service-list creative-service-detail-list">
           {creativeServices.map((service, index) => (
-            <article className="reveal" key={t(service.title)}>
-              <span>0{index + 1}</span><h3>{t(service.title)}</h3><p>{t(service.copy)}</p>
-              <ul>{service.outputs.map((output) => <li key={t(output)}>{t(output)}</li>)}</ul>
+            <article className="reveal" key={service.title}>
+              <span>0{index + 1}</span><h3>{service.title}</h3><p>{service.copy}</p>
+              <ul>{service.outputs.map((output) => <li key={output}>{output}</li>)}</ul>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="motion-stage section-dark" id="motion" aria-label={t("Motion design demonstration")}>
-        <div className="motion-stage-copy reveal"><span>{t("MOTION IS A BRAND VOICE")}</span><h2>{t("FRAME.")}<br />{t("RHYTHM.")}<br /><i>{t("IMPACT.")}</i></h2><p>{t("Motion is designed from the same proportions, type and energy as the identity—so every transition still feels unmistakably on-brand.")}</p></div>
+      <section className="motion-stage section-dark" id="motion" aria-label="Motion design demonstration">
+        <div className="motion-stage-copy reveal"><span>MOTION IS A BRAND VOICE</span><h2>FRAME.<br />RHYTHM.<br /><i>IMPACT.</i></h2><p>Motion is designed from the same proportions, type and energy as the identity—so every transition still feels unmistakably on-brand.</p></div>
         <div className="motion-reel reveal" aria-hidden="true">
           <div className="reel-frame frame-a"><Starburst tone="dark" /><span>01</span></div>
-          <div className="reel-frame frame-b"><strong>{t("MOVE")}</strong><span>02</span></div>
-          <div className="reel-frame frame-c"><Starburst /><strong>{t("WAHAJ")}</strong><span>03</span></div>
+          <div className="reel-frame frame-b"><strong>MOVE</strong><span>02</span></div>
+          <div className="reel-frame frame-c"><Starburst /><strong>WAHAJ</strong><span>03</span></div>
         </div>
       </section>
 
       <section className="portfolio-work section-dark" id="visual-work">
-        <header className="subpage-section-head reveal"><span>{t("WAHAJ / SELECTED WORK")}</span><h2>{t("EDIT. MOVE.")}<br />{t("DESIGN.")}</h2></header>
-        <p className="portfolio-work-intro reveal">{t("Selected design work created by our studio across identity, editorial and social media.")}</p>
+        <header className="subpage-section-head reveal"><span>WAHAJ / SELECTED WORK</span><h2>EDIT. MOVE.<br />DESIGN.</h2></header>
+        <p className="portfolio-work-intro reveal">Selected design work created by our studio across identity, editorial and social media.</p>
         <div className="portfolio-work-grid">
           {portfolioWork.map((item, index) => (
-            <article className="portfolio-work-card reveal" key={t(item.title)}>
-              <ProjectLink id={item.title === 'PAIN' ? 'pain' : item.title === 'WESAL IDENTITY' ? 'wesal' : item.title === 'KROMA ERA' ? 'kroma-era' : undefined}><div className="portfolio-work-image">
-                <ProjectImage src={assetPath(item.image)} alt={t(item.imageAlt)} />
+            <article className="portfolio-work-card reveal" key={item.title}>
+              <div className="portfolio-work-image">
+                <img src={assetPath(item.image)} alt={item.imageAlt} loading="lazy" />
                 <span>0{index + 1}</span>
               </div>
-              <div className="portfolio-work-meta"><span>{t(item.category)}</span><span>{t("WAHAJ / CREATIVE")}</span></div>
-              <h3>{t(item.title)}</h3>
-              <p>{t(item.summary)}</p>
-              <ul className="creative-case-tags">{item.focus.map((focus) => <li key={t(focus)}>{t(focus)}</li>)}</ul></ProjectLink>
+              <div className="portfolio-work-meta"><span>{item.category}</span><span>WAHAJ / CREATIVE</span></div>
+              <h3>{item.title}</h3>
+              <p>{item.summary}</p>
+              <ul className="creative-case-tags">{item.focus.map((focus) => <li key={focus}>{focus}</li>)}</ul>
             </article>
           ))}
         </div>
       </section>
 
       <section className="creative-process section-dark" id="creative-process">
-        <header className="subpage-section-head reveal"><span>{t("THE CREATIVE PROCESS")}</span><h2>{t("FROM SIGNAL")}<br />{t("TO SYSTEM.")}</h2></header>
+        <header className="subpage-section-head reveal"><span>THE CREATIVE PROCESS</span><h2>FROM SIGNAL<br />TO SYSTEM.</h2></header>
         <div className="creative-process-grid">
-          {creativeProcess.map(([title, copy], index) => <article className="reveal" key={t(title)}><span>0{index + 1}</span><h3>{t(title)}</h3><p>{t(copy)}</p></article>)}
+          {creativeProcess.map(([title, copy], index) => <article className="reveal" key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{copy}</p></article>)}
         </div>
       </section>
 
-      <section className="page-next page-next-yellow reveal"><span>{t("READY TO GIVE THE BRAND A VOICE?")}</span><Link href={routeHref('/contact')}>{t("BUILD THE NEXT IDEA")}<i>↗</i></Link></section>
+      <section className="page-next page-next-yellow reveal"><span>READY TO GIVE THE BRAND A VOICE?</span><a href={routeHref('/contact')}>BUILD THE NEXT IDEA <i>↗</i></a></section>
     </main>
   )
 }

@@ -1,8 +1,22 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { sites } from '@openai/sites-vite-plugin'
 
-// VITE_BASE lets the same source deploy to '/' (sandbox/Netlify) and '/WAHAJ/' (GitHub Pages).
 export default defineConfig({
-  base: process.env.VITE_BASE || '/',
-  plugins: [react()],
+  base: './',
+  plugins: [
+    react(),
+    sites(),
+    {
+      name: 'wahaj-static-worker',
+      apply: 'build',
+      generateBundle() {
+        this.emitFile({
+          type: 'asset',
+          fileName: 'server/index.js',
+          source: 'export default { fetch(request, env) { return env.ASSETS.fetch(request) } }',
+        })
+      },
+    },
+  ],
 })

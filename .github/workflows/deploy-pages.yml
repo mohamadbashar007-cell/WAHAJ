@@ -34,13 +34,9 @@ jobs:
         run: npm run build
         env:
           VITE_CONTACT_EMAIL: ${{ vars.VITE_CONTACT_EMAIL }}
-          VITE_SITE_ORIGIN: https://mohamadbashar007-cell.github.io
-          VITE_BASE: /WAHAJ/
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

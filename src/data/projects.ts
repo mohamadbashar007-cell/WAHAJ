@@ -5,9 +5,6 @@ export type Project = {
   number: string
   title: string
   category: string
-  summaryAr: string
-  categoryAr: string
-  imageAltAr: string
   summary: string
   image: string
   imageAlt: string
@@ -20,12 +17,11 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: 'wesal',
-    summaryAr: "تجربة سفر ثنائية اللغة تستلهم دفء الرحلة وحركتها والطريق الممتد أمامنا.", categoryAr: "هوية بصرية / تجربة رقمية", imageAltAr: "واجهة موقع وصال للسفر أمام طريق جبلي وقت الغروب",
     number: '01',
     title: 'WESAL',
     category: 'BRAND IDENTITY / DIGITAL EXPERIENCE',
     summary: 'A cinematic bilingual travel experience built around movement, warmth and the road ahead.',
-    image: assetPath('/projects/wesal.webp'),
+    image: assetPath('/projects/wesal.png'),
     imageAlt: 'English Wesal luxury travel website shown against a mountain road at sunset',
     source: 'Selected work',
     tone: 'warm',
@@ -33,7 +29,6 @@ export const projects: Project[] = [
   },
   {
     id: 'kroma-era',
-    summaryAr: "هوية أزياء تجمع الحنين المعاصر والخطوط التعبيرية وإيقاع التصميم التحريري.", categoryAr: "هوية بصرية / أزياء", imageAltAr: "هوية كرومـا إيرا للأزياء مع كولاج تحريري وتصميم طباعي",
     number: '02',
     title: 'KROMA ERA',
     category: 'BRAND IDENTITY / FASHION',
@@ -46,12 +41,11 @@ export const projects: Project[] = [
   },
   {
     id: 'zaman',
-    summaryAr: "موقع مؤسسي ثنائي اللغة يعرض المستلزمات الصناعية والمواد الغذائية بوضوح.", categoryAr: "موقع مؤسسي / تطوير", imageAltAr: "واجهة موقع زمان المؤسسي مع صورة مستودع صناعي",
     number: '03',
     title: 'ZAMAN',
     category: 'CORPORATE WEB / DEVELOPMENT',
     summary: 'A bilingual corporate website presenting industrial supplies and food materials with clarity and confidence.',
-    image: assetPath('/projects/zaman.webp'),
+    image: assetPath('/projects/zaman.png'),
     imageAlt: 'Zaman corporate website with an industrial warehouse hero',
     link: 'https://zaman-eg.com',
     source: 'Live site',
@@ -60,7 +54,6 @@ export const projects: Project[] = [
   },
   {
     id: 'pain',
-    summaryAr: "دراسة جامعية لغلاف كتاب تحوّل شعوراً داخلياً إلى تكوين بصري مركز.", categoryAr: "تصميم تحريري / إخراج فني", imageAltAr: "غلاف كتاب PAIN بوجه نحتي وعنوان أحمر",
     number: '04',
     title: 'PAIN',
     category: 'EDITORIAL DESIGN / ART DIRECTION',
@@ -73,12 +66,11 @@ export const projects: Project[] = [
   },
   {
     id: 'segybc',
-    summaryAr: "منصة مؤسسية ثنائية اللغة تعرض الشراكة الاقتصادية والفرص وأنشطة المجلس.", categoryAr: "موقع مؤسسي / تطوير", imageAltAr: "موقع مجلس الأعمال السوري المصري ثنائي اللغة",
     number: '05',
     title: 'SEGYBC',
     category: 'INSTITUTIONAL WEB / DEVELOPMENT',
     summary: 'A bilingual institutional platform designed to communicate economic partnership, opportunity and authority.',
-    image: assetPath('/projects/segybc.webp'),
+    image: assetPath('/projects/segybc.png'),
     imageAlt: 'Syrian Egyptian Business Council bilingual institutional website',
     link: 'https://segybc.com',
     source: 'Live site',

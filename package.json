@@ -5,11 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && node scripts/build-routes.mjs",
-    "preview": "vite preview",
-    "test:ui": "node scripts/qa.mjs",
-    "test:form": "node scripts/qa-form.mjs",
-    "audit:lighthouse": "node scripts/lighthouse.mjs"
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@fontsource-variable/archivo": "^5.2.6",
@@ -18,13 +15,12 @@
     "react-dom": "^19.1.1"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.13.0",
+    "@openai/sites-vite-plugin": "^0.2.0",
     "@types/react": "^19.1.11",
     "@types/react-dom": "^19.1.7",
-    "@vitejs/plugin-react": "^5.2.0",
-    "lighthouse": "^13.4.1",
+    "@vitejs/plugin-react": "^6.1.1",
     "playwright-core": "^1.62.1",
     "typescript": "~5.9.2",
-    "vite": "^7.3.6"
+    "vite": "^8.0.0"
   }
 }

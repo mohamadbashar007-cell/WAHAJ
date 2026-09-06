@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://wahaj-creative-studio.taghreed96kw.chatgpt.site/sitemap.xml
