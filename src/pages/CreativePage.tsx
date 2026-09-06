@@ -1,3 +1,4 @@
+import { projects } from '../data/projects'
 import { Starburst } from '../components/Starburst'
 import { assetPath, routeHref } from '../lib/paths'
 
@@ -8,54 +9,84 @@ const creativeServices = [
   { title: 'DIGITAL DESIGN', copy: 'Interfaces and content systems that translate the same visual idea into a useful, responsive screen experience.', outputs: ['UI / UX', 'PROTOTYPES', 'DESIGN SYSTEMS', 'INTERACTION'] },
 ]
 
+const creativeCases = [
+  { id: 'kroma-era', focus: ['IDENTITY SYSTEM', 'CUSTOM TYPE', 'EDITORIAL DIRECTION'] },
+  { id: 'pain', focus: ['ART DIRECTION', 'COVER DESIGN', 'PRINT LANGUAGE'] },
+  { id: 'wesal', focus: ['DIGITAL ART DIRECTION', 'BILINGUAL UI', 'IMAGE DIRECTION'] },
+]
+
 const portfolioWork = [
   {
-    title: 'SOCIAL MEDIA POSTS FOR INSTAGRAM',
-    category: 'SOCIAL MEDIA DESIGN',
-    image: 'projects/design/social-media-instagram.png',
-    imageAlt: 'Social media posts for Instagram project cover',
-    summary: 'A collection of Instagram social media posts designed for Vortex.',
-    focus: ['SOCIAL MEDIA', 'LAYOUT', 'ART DIRECTION'],
+    title: 'SHOWREEL 2024',
+    category: 'MOTION / POST-PRODUCTION',
+    image: 'projects/creative/showreel-2024.jpg',
+    imageAlt: 'A montage of frames from motion graphics and video editing projects',
+    summary: 'A fast-cut collection of campaign films, branded sequences and visual effects shaped around rhythm, clarity and impact.',
+    focus: ['EDITING', 'MOTION DESIGN', 'VFX', 'SOUND DESIGN'],
   },
   {
-    title: 'RETRO PROFILE COMPANY FOR VORTEX',
-    category: 'COMPANY PROFILE / EDITORIAL',
-    image: 'projects/design/vortex-retro-profile.png',
-    imageAlt: 'Retro Vortex company profile project cover',
-    summary: 'A retro-inspired company profile created for Vortex Group.',
-    focus: ['EDITORIAL DESIGN', 'ARABIC TYPE', 'LAYOUT'],
+    title: 'AL-FUTTAIM',
+    category: 'CORPORATE REEL',
+    image: 'projects/creative/al-futtaim.jpg',
+    imageAlt: 'A frame from the Al-Futtaim corporate reel',
+    summary: 'A polished corporate edit that turns business moments into a confident, human and energetic visual narrative.',
+    focus: ['VIDEO EDITING', 'PACING', 'COLOR', 'TITLES'],
   },
   {
-    title: 'PAIN | A BOOK COVER DESIGN FOR UNIVERSITY',
-    category: 'BOOK COVER / EDITORIAL DESIGN',
-    image: 'projects/design/pain-book-cover.png',
-    imageAlt: 'Pain book cover design project cover',
-    summary: 'A university book-cover design exploring pain through a focused editorial composition.',
-    focus: ['COVER DESIGN', 'EDITORIAL', 'TYPOGRAPHY'],
+    title: 'ARAMCO SAUDI',
+    category: 'BRAND FILM',
+    image: 'projects/creative/aramco-saudi.jpg',
+    imageAlt: 'A cinematic industrial frame from the Aramco Saudi film',
+    summary: 'Cinematic post-production for an industrial story, balancing people, scale and technology in one cohesive cut.',
+    focus: ['EDITING', 'COLOR GRADING', 'COMPOSITING'],
   },
   {
-    title: 'WESAL | LOGO IDENTITY',
-    category: 'LOGO / BRAND IDENTITY',
-    image: 'projects/design/wesal-logo-identity.png',
-    imageAlt: 'Wesal logo identity project cover',
-    summary: 'A bilingual logo and visual identity for Wesal, built around movement and connection.',
-    focus: ['LOGO DESIGN', 'BRAND IDENTITY', 'ARABIC TYPE'],
+    title: 'STRONG INDEPENDENT OM',
+    category: 'BRANDED CONTENT',
+    image: 'projects/creative/strong-independent.jpg',
+    imageAlt: 'A branded interview frame for Strong Independent OM',
+    summary: 'A personality-led format with a distinct title language, restrained motion and clean editorial pacing.',
+    focus: ['ART DIRECTION', 'EDITING', 'MOTION TITLES'],
   },
   {
-    title: 'KROMA ERA | CLOTHING BRAND LOGO IDENTITY',
-    category: 'FASHION / BRAND IDENTITY',
-    image: 'projects/design/kroma-era.png',
-    imageAlt: 'Kroma Era clothing brand identity project cover',
-    summary: 'A logo and visual identity system created for the Kroma Era clothing brand.',
-    focus: ['LOGO DESIGN', 'FASHION BRANDING', 'VISUAL IDENTITY'],
+    title: 'WARA ALKAWALIS',
+    category: 'ENTERTAINMENT FORMAT',
+    image: 'projects/creative/wara-alkawalis.jpg',
+    imageAlt: 'A dark promotional portrait for Wara Alkawalis',
+    summary: 'A bold entertainment package built from character-led imagery, graphic cutouts and high-contrast framing.',
+    focus: ['KEY VISUAL', 'EDITING', 'SHOW PACKAGE'],
   },
   {
-    title: 'VORTEX COMPANY PROFILE',
-    category: 'COMPANY PROFILE / BRAND SYSTEM',
-    image: 'projects/design/vortex-company-profile.png',
-    imageAlt: 'Vortex company profile project cover',
-    summary: 'A corporate profile system presenting the Vortex Group and its business divisions.',
-    focus: ['EDITORIAL DESIGN', 'BRAND SYSTEM', 'INFOGRAPHICS'],
+    title: 'ABU LOKMA',
+    category: 'FOOD COMEDY SHOW',
+    image: 'projects/creative/abu-lokma.jpg',
+    imageAlt: 'A colorful key visual for the Abu Lokma food comedy show',
+    summary: 'A playful food-show identity with expressive Arabic lettering, warm color and a flexible episodic visual system.',
+    focus: ['SHOW IDENTITY', 'ARABIC TYPE', 'SOCIAL CUTS'],
+  },
+  {
+    title: 'ZEROTECH CAMPAIGN',
+    category: 'SOCIAL DESIGN',
+    image: 'projects/creative/zerotech-campaign.jpg',
+    imageAlt: 'A collection of Zerotech social media campaign designs',
+    summary: 'A broad social content system translating technical products into direct, high-impact campaign visuals.',
+    focus: ['CAMPAIGN DESIGN', 'COMPOSITING', 'CONTENT SYSTEM'],
+  },
+  {
+    title: 'HEALTHCARE & FMCG',
+    category: 'SOCIAL CAMPAIGNS',
+    image: 'projects/creative/healthcare-fmcg-campaign.jpg',
+    imageAlt: 'A grid of healthcare and FMCG social media designs',
+    summary: 'Product-first campaign art that keeps each message immediate while preserving a recognizable visual family.',
+    focus: ['SOCIAL DESIGN', 'PRODUCT ART', 'COPY LAYOUT'],
+  },
+  {
+    title: 'BIG MIND',
+    category: 'CAMPAIGN ART DIRECTION',
+    image: 'projects/creative/big-mind-campaign.jpg',
+    imageAlt: 'A vibrant orange campaign collage for Big Mind tea',
+    summary: 'A characterful campaign world combining bold Arabic headlines, product staging and a memorable color language.',
+    focus: ['ART DIRECTION', 'KEY VISUALS', 'ARABIC TYPOGRAPHY'],
   },
 ]
 
@@ -67,6 +98,11 @@ const creativeProcess = [
 ]
 
 export function CreativePage() {
+  const visualProjects = creativeCases.map((creativeCase) => ({
+    ...projects.find((project) => project.id === creativeCase.id)!,
+    focus: creativeCase.focus,
+  }))
+
   return (
     <main className="inner-page creative-page">
       <section className="page-hero creative-hero">
@@ -77,7 +113,7 @@ export function CreativePage() {
       </section>
 
       <nav className="page-jump-nav" aria-label="Creative page sections">
-        <span>EXPLORE</span><a href={routeHref('/design?section=services')}>SERVICES</a><a href={routeHref('/design?section=motion')}>MOTION</a><a href={routeHref('/design?section=visual-work')}>SELECTED WORK</a><a href={routeHref('/design?section=creative-process')}>PROCESS</a><a href={routeHref('/contact')}>START A PROJECT ↗</a>
+        <span>EXPLORE</span><a href={routeHref('/design?section=services')}>SERVICES</a><a href={routeHref('/design?section=motion')}>MOTION</a><a href={routeHref('/design?section=visual-work')}>SELECTED WORK</a><a href={routeHref('/design?section=brand-systems')}>BRAND SYSTEMS</a><a href={routeHref('/design?section=creative-process')}>PROCESS</a><a href={routeHref('/contact')}>START A PROJECT ↗</a>
       </nav>
 
       <section className="creative-services section-light" id="services">
@@ -95,15 +131,15 @@ export function CreativePage() {
       <section className="motion-stage section-dark" id="motion" aria-label="Motion design demonstration">
         <div className="motion-stage-copy reveal"><span>MOTION IS A BRAND VOICE</span><h2>FRAME.<br />RHYTHM.<br /><i>IMPACT.</i></h2><p>Motion is designed from the same proportions, type and energy as the identity—so every transition still feels unmistakably on-brand.</p></div>
         <div className="motion-reel reveal" aria-hidden="true">
-          <div className="reel-frame frame-a"><Starburst tone="dark" /><span>01</span></div>
+          <div className="reel-frame frame-a"><Starburst /><span>01</span></div>
           <div className="reel-frame frame-b"><strong>MOVE</strong><span>02</span></div>
           <div className="reel-frame frame-c"><Starburst /><strong>WAHAJ</strong><span>03</span></div>
         </div>
       </section>
 
       <section className="portfolio-work section-dark" id="visual-work">
-        <header className="subpage-section-head reveal"><span>WAHAJ / SELECTED WORK</span><h2>EDIT. MOVE.<br />DESIGN.</h2></header>
-        <p className="portfolio-work-intro reveal">Selected design work created by our studio across identity, editorial and social media.</p>
+        <header className="subpage-section-head reveal"><span>SELECTED WORK</span><h2>EDIT. MOVE.<br />DESIGN.</h2></header>
+        <p className="portfolio-work-intro reveal">A focused selection across post-production, motion graphics, campaign art direction and social design.</p>
         <div className="portfolio-work-grid">
           {portfolioWork.map((item, index) => (
             <article className="portfolio-work-card reveal" key={item.title}>
@@ -115,6 +151,19 @@ export function CreativePage() {
               <h3>{item.title}</h3>
               <p>{item.summary}</p>
               <ul className="creative-case-tags">{item.focus.map((focus) => <li key={focus}>{focus}</li>)}</ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="visual-work section-light" id="brand-systems">
+        <header className="subpage-section-head reveal"><span>BRAND &amp; DIGITAL</span><h2>SELECTED<br />SYSTEMS.</h2></header>
+        <div className="visual-work-grid">
+          {visualProjects.map((project) => (
+            <article className="reveal" key={project.id}>
+              <div><img src={project.image} alt={project.imageAlt} /></div>
+              <span>{project.category}</span><h3>{project.title}</h3><p>{project.summary}</p>
+              <ul className="creative-case-tags">{project.focus.map((item) => <li key={item}>{item}</li>)}</ul>
             </article>
           ))}
         </div>

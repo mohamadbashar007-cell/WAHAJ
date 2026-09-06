@@ -9,7 +9,7 @@ export function About() {
       </div>
       <div className="about-grid reveal">
         <div className="logo-stamp">
-          <img src={assetPath('/wahaj-logo-dark.png')} alt="Official WAHAJ logo" loading="lazy" />
+          <img src={assetPath('/wahaj-logo.png')} alt="Official WAHAJ logo" loading="lazy" />
         </div>
         <p>WAHAJ is an independent creative company uniting strategy, design and technology into one focused system—built to make brands visible, relevant and impossible to ignore.</p>
         <div className="company-pillars">

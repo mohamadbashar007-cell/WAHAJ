@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import { Starburst } from './Starburst'
-import { assetPath, routeHref } from '../lib/paths'
 
 export function Hero() {
   const hero = useRef<HTMLElement>(null)
@@ -29,11 +28,6 @@ export function Hero() {
         <span className="hero-line line-two"><i>BRANDS</i></span>
         <span className="hero-line line-three"><i>GLOW.</i><Starburst className="hero-burst" label="WAHAJ spark" /></span>
       </h1>
-      <a className="hero-feature" href={routeHref('/work')} data-cursor="VIEW" aria-label="View selected work">
-        <img src={assetPath('/projects/wesal.png')} alt="Wesal digital experience, a selected WAHAJ project" />
-        <span><b>FEATURED / 01</b><em>WESAL — BRAND + DIGITAL</em></span>
-        <i>↗</i>
-      </a>
       <div className="hero-bottom reveal">
         <p>WE TURN CLEAR IDEAS INTO<br />VISIBLE, MEMORABLE EXPERIENCES.</p>
         <a href="#work" className="scroll-link" data-cursor="SCROLL">
