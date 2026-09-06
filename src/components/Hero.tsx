@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Starburst } from './Starburst'
+import { routeHref } from '../lib/paths'
 
 export function Hero() {
   const hero = useRef<HTMLElement>(null)
@@ -29,10 +30,11 @@ export function Hero() {
         <span className="hero-line line-three"><i>GLOW.</i><Starburst className="hero-burst" label="WAHAJ spark" /></span>
       </h1>
       <div className="hero-bottom reveal">
-        <p>WE TURN CLEAR IDEAS INTO<br />VISIBLE, MEMORABLE EXPERIENCES.</p>
-        <a href="#work" className="scroll-link" data-cursor="SCROLL">
-          <span>SCROLL TO IGNITE</span><i>↓</i>
-        </a>
+        <p>Brand identities, websites and applications.<br />Designed and built together, from Cairo to everywhere.</p>
+        <div className="hero-actions">
+          <a href={routeHref('/contact/')} className="hero-cta" data-cursor="LET’S GO">START A PROJECT <span>↗</span></a>
+          <a href={routeHref('/?section=work')} className="scroll-link" data-cursor="SCROLL"><span>EXPLORE OUR WORK</span><i>↓</i></a>
+        </div>
       </div>
       <span className="hero-index" aria-hidden="true">01</span>
     </section>

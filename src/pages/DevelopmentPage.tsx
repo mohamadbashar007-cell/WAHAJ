@@ -1,4 +1,6 @@
 import { Starburst } from '../components/Starburst'
+import { ProjectImage } from '../components/ProjectImage'
+import { caseStudies } from '../data/case-studies'
 import { assetPath, routeHref } from '../lib/paths'
 
 const capabilities = [
@@ -80,12 +82,13 @@ export function DevelopmentPage() {
           {digitalCases.map((project) => (
             <article className="development-case reveal" id={project.id} key={project.id}>
               <header><span>{project.number}</span><div><h3>{project.title}</h3><p>{project.type}</p></div>{project.link && <a href={project.link} target="_blank" rel="noreferrer">VIEW LIVE ↗</a>}</header>
-              <div className="development-case-image"><img src={project.image} alt={`${project.title} project shown in English`} /></div>
+              <div className="development-case-image"><ProjectImage src={project.image} alt={`${project.title} website interface`} /></div>
               <div className="development-case-detail">
                 <p className="case-lead">{project.summary}</p>
                 <div><span>WHAT WE BUILT</span><p>{project.build}</p></div>
                 <div className="case-stack"><span>LANGUAGES & STACK</span><ul>{project.stack.map((item) => <li key={item}>{item}</li>)}</ul></div>
               </div>
+              {caseStudies[project.id] && <a className="text-link project-detail-link" href={routeHref(`/work/${project.id}/`)}>EXPLORE PROJECT ↗</a>}
             </article>
           ))}
         </div>

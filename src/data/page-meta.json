@@ -1,0 +1,11 @@
+{
+  "/": { "title": "WAHAJ — Design × Code", "description": "WAHAJ creates brand identities, websites and applications. Independent design and development from Cairo, working everywhere." },
+  "/development": { "title": "Digital Development — WAHAJ", "description": "Explore websites, applications and platforms by WAHAJ, with project details and a clear design-to-development process." },
+  "/design": { "title": "Design, Editing & Motion — WAHAJ", "description": "Brand identity, editorial design and motion direction by WAHAJ. Explore selected visual work and creative services." },
+  "/contact": { "title": "Start a Project — WAHAJ", "description": "Tell WAHAJ about your next brand, website or application. Share a project brief and start the conversation." },
+  "/work/wesal": { "title": "WESAL — Selected Work — WAHAJ", "description": "Explore the Wesal travel identity and bilingual digital experience: the brief, visual direction and project scope." },
+  "/work/kroma-era": { "title": "KROMA ERA — Selected Work — WAHAJ", "description": "Explore Kroma Era, a fashion brand identity combining modern nostalgia, custom typography and editorial direction." },
+  "/work/zaman": { "title": "ZAMAN — Selected Work — WAHAJ", "description": "Explore Zaman, a bilingual corporate website for industrial supplies and food materials, designed and developed by WAHAJ." },
+  "/work/pain": { "title": "PAIN — Selected Work — WAHAJ", "description": "Explore PAIN, a university book-cover design study combining sculptural imagery, expressive typography and art direction." },
+  "/work/segybc": { "title": "SEGYBC — Selected Work — WAHAJ", "description": "Explore the Syrian Egyptian Business Council website, a bilingual institutional digital experience by WAHAJ." }
+}

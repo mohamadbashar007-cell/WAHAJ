@@ -1,4 +1,6 @@
 import type { Project } from '../data/projects'
+import { routeHref } from '../lib/paths'
+import { ProjectImage } from './ProjectImage'
 
 export function ProjectPreview({ project, index }: { project: Project; index: number }) {
   const content = (
@@ -9,11 +11,11 @@ export function ProjectPreview({ project, index }: { project: Project; index: nu
           <h3>{project.title}</h3>
           <p>{project.category}</p>
         </div>
-        <span className="project-arrow" aria-hidden="true">{project.link ? '↗' : '—'}</span>
+        <span className="project-arrow" aria-hidden="true">↗</span>
       </div>
       <div className="project-visual">
-        <img src={project.image} alt={project.imageAlt} loading={index > 0 ? 'lazy' : 'eager'} />
-        <span className="project-source">{project.source}{project.link ? ' ↗' : ''}</span>
+        <ProjectImage src={project.image} alt={project.imageAlt} />
+        <span className="project-source">EXPLORE PROJECT ↗</span>
       </div>
       <p className="project-summary">{project.summary}</p>
     </>
@@ -21,9 +23,7 @@ export function ProjectPreview({ project, index }: { project: Project; index: nu
 
   return (
     <article className={`project project-${index + 1} tone-${project.tone} reveal`}>
-      {project.link
-        ? <a href={project.link} target="_blank" rel="noreferrer" className="project-link" data-cursor="VIEW">{content}</a>
-        : <div className="project-link">{content}</div>}
+      <a href={routeHref(`/work/${project.id}/`)} className="project-link" data-cursor="VIEW">{content}</a>
     </article>
   )
 }

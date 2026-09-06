@@ -11,11 +11,11 @@ export function About() {
         <div className="logo-stamp">
           <img src={assetPath('/wahaj-logo-dark.png')} alt="Official WAHAJ logo" loading="lazy" />
         </div>
-        <p>WAHAJ is an independent creative company uniting strategy, design and technology into one focused system—built to make brands visible, relevant and impossible to ignore.</p>
+        <p>Based in Cairo and working everywhere, WAHAJ brings brand design and digital development together—from the first visual idea to the website or application people use.</p>
         <div className="company-pillars">
-          <div><span>01</span><strong>STRATEGIC<br />BY DESIGN</strong></div>
-          <div><span>02</span><strong>BUILT FOR<br />IMPACT</strong></div>
-          <div><span>03</span><strong>ONE VISION<br />END TO END</strong></div>
+          <div><span>01</span><strong>DEFINE THE SCOPE</strong><p>Start with the audience, the goal and the work that needs to be delivered.</p></div>
+          <div><span>02</span><strong>DESIGN & DEVELOP</strong><p>Connect the visual direction to the way the experience works.</p></div>
+          <div><span>03</span><strong>REVIEW & HAND OVER</strong><p>Review the details and prepare the agreed files or digital experience for delivery.</p></div>
         </div>
       </div>
     </section>
