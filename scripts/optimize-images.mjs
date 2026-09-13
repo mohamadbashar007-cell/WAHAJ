@@ -8,7 +8,7 @@ let before = 0, after = 0
 async function walk(dir) {
   for (const item of await readdir(dir, { withFileTypes: true })) {
     const source = path.join(dir, item.name)
-    if (item.isDirectory()) { if (item.name !== 'optimized') await walk(source); continue }
+    if (item.isDirectory()) { if (!['optimized', 'behance'].includes(item.name)) await walk(source); continue }
     if (!/\.(png|jpe?g|webp)$/i.test(item.name)) continue
     const relative = path.relative('public', source).replaceAll('\\', '/')
     const basename = relative.replace(/^projects\//, '').replace(/\.[^.]+$/, '').replaceAll('/', '-')

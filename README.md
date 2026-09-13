@@ -25,11 +25,14 @@ All `VITE_` settings are public browser configuration. Never put provider API ke
 - `src/data/case-studies.ts`: project scope and editorial descriptions based on existing portfolio content. No invented metrics or testimonials.
 - `src/data/page-meta.json`: shared browser and static-page metadata.
 - `npm run images`: creates responsive WebP variants and their manifest while preserving original images. Run after changing project imagery, then rebuild.
+- `src/data/behance-projects.json`: complete galleries for the seven published projects from `behance.net/mazenmagdy29`, with ordered image rows, source URLs and dimensions. Images are hosted locally in `public/projects/behance/` with 800px and up-to-1920px WebP versions. Dedicated `/design/:project/` pages include keyboard-accessible enlargement; the existing Wesal, Kroma and Pain case studies share these galleries.
+- `node scripts/import-behance.mjs`: imports project images on Windows using curl and Sharp. Download cache lives in `artifacts/behance/`; remove cached HTML and `.image` files to refresh source data. The importer fails on unknown projects, pagination or unsupported modules instead of silently omitting content. `npm run images` skips these already-optimized galleries.
+- `node scripts/qa-behance.mjs`: verifies every gallery asset, direct project routes at domain and subdirectory roots, mobile/desktop layout, image counts, keyboard navigation and focus restoration against the production build.
 - The motion section remains a labeled WAHAJ identity animation study with a pause control. No client video, testimonials or team details have been added without source material.
 
 ## Routes and verification
 
-The build generates nine static HTML entry points, each with its own title and description, including `/work/wesal/` and the other selected projects. They work at a domain root or a GitHub Pages project subdirectory. Existing `#/...` links are translated to the new routes. These are static entry points with client-rendered page bodies, not full server-side rendering.
+The build generates sixteen static HTML entry points, each with its own title and description, including `/work/wesal/` and the other selected projects. They work at a domain root or a GitHub Pages project subdirectory. Existing `#/...` links are translated to the new routes. These are static entry points with client-rendered page bodies, not full server-side rendering.
 
 `node scripts/qa.mjs` tests the production output at both deployment roots, responsive widths, navigation, keyboard focus, the custom cursor and the unconfigured form fallback. `node scripts/qa-contact.mjs` tests direct submission with intercepted local requests; it never sends an enquiry to a real recipient. The scripts use local Chrome on Windows; adjust the executable path for another environment. Screenshots and results are written under `artifacts/refinement/`.
 

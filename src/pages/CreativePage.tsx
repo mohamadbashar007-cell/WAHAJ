@@ -1,3 +1,4 @@
+import { behanceProjects } from '../components/BehanceGallery'
 import { projects } from '../data/projects'
 import { useState } from 'react'
 import { ProjectImage } from '../components/ProjectImage'
@@ -19,6 +20,7 @@ const creativeCases = [
 
 const portfolioWork = [
   {
+    id: 'social-media-posts',
     title: 'SOCIAL MEDIA POSTS',
     category: 'SOCIAL MEDIA DESIGN',
     image: 'projects/creative/instagram-social-posts.png',
@@ -27,6 +29,7 @@ const portfolioWork = [
     focus: ['SOCIAL DESIGN', 'LAYOUT', 'ART DIRECTION'],
   },
   {
+    id: 'vortex-retro-profile',
     title: 'VORTEX — RETRO PROFILE',
     category: 'EDITORIAL / COMPANY PROFILE',
     image: 'projects/creative/vortex-retro-profile.webp',
@@ -35,6 +38,7 @@ const portfolioWork = [
     focus: ['EDITORIAL DESIGN', 'TYPOGRAPHY', 'LAYOUT'],
   },
   {
+    id: 'pain',
     title: 'PAIN',
     category: 'BOOK COVER DESIGN',
     image: 'projects/creative/pain-book-cover.webp',
@@ -43,6 +47,7 @@ const portfolioWork = [
     focus: ['COVER DESIGN', 'COMPOSITION', 'TYPOGRAPHY'],
   },
   {
+    id: 'wesal-identity',
     title: 'WESAL',
     category: 'LOGO IDENTITY',
     image: 'projects/creative/wesal-identity.png',
@@ -51,6 +56,7 @@ const portfolioWork = [
     focus: ['LOGO DESIGN', 'IDENTITY', 'BRAND APPLICATION'],
   },
   {
+    id: 'kroma-era',
     title: 'KROMA ERA',
     category: 'CLOTHING BRAND IDENTITY',
     image: 'projects/creative/kroma-era.png',
@@ -59,6 +65,7 @@ const portfolioWork = [
     focus: ['BRAND IDENTITY', 'CUSTOM TYPE', 'FASHION'],
   },
   {
+    id: 'vortex-company-profile',
     title: 'VORTEX COMPANY PROFILE',
     category: 'CORPORATE EDITORIAL',
     image: 'projects/creative/vortex-company-profile.png',
@@ -67,6 +74,8 @@ const portfolioWork = [
     focus: ['COMPANY PROFILE', 'GRID SYSTEM', 'EDITORIAL'],
   },
 ]
+
+portfolioWork.push({ id: 'personal-logo', title: 'MY PERSONAL LOGO', category: 'PERSONAL IDENTITY', image: 'projects/behance/personal-logo/01-small.webp', imageAlt: 'Mazen Magdy personal logo', summary: 'A personal mark and its visual presentation.', focus: ['LOGO DESIGN', 'IDENTITY'] })
 
 const creativeProcess = [
   ['FIND THE IDEA', 'We identify the clearest concept the audience should feel and remember.'],
@@ -122,14 +131,15 @@ export function CreativePage() {
         <div className="portfolio-work-grid">
           {portfolioWork.map((item, index) => (
             <article className="portfolio-work-card reveal" key={item.title}>
-              <div className="portfolio-work-image">
+              <a className="portfolio-work-image" href={routeHref(`/design/${item.id}/`)} data-cursor="VIEW">
                 <ProjectImage src={assetPath(item.image)} alt={item.imageAlt} sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw" />
                 <span>0{index + 1}</span>
-              </div>
+              </a>
               <div className="portfolio-work-meta"><span>{item.category}</span><span>WAHAJ / CREATIVE</span></div>
-              <h3>{item.title}</h3>
+              <h3><a href={routeHref(`/design/${item.id}/`)}>{item.title}</a></h3>
               <p>{item.summary}</p>
               <ul className="creative-case-tags">{item.focus.map((focus) => <li key={focus}>{focus}</li>)}</ul>
+              <a className="text-link project-detail-link" href={routeHref(`/design/${item.id}/`)}>EXPLORE PROJECT / {behanceProjects.find(project => project.id === item.id)?.imageCount} IMAGES ↗</a>
             </article>
           ))}
         </div>

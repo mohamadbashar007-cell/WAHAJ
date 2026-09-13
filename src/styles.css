@@ -585,6 +585,29 @@ main:focus { outline: none; }
 .case-gallery { margin: 0; padding: 0 var(--pad) 4rem; }
 .case-gallery img { width: 100%; height: auto; max-height: 1200px; object-fit: contain; }
 .case-gallery figcaption { padding-top: 1rem; font-size: .8rem; }
+.portfolio-work-image { display: block; }
+.creative-project-page .case-hero h1 { max-width: 18ch; font-size: clamp(2.8rem, 7.8vw, 8rem); line-height: .98; letter-spacing: -.055em; }
+.presentation-intro { max-width: 48ch; line-height: 1.7; color: var(--paper); }
+.behance-presentation { background: #10131c; }
+.presentation-bar { display: flex; justify-content: space-between; gap: 1rem; padding: 1.5rem var(--pad); color: var(--paper); font-size: .7rem; letter-spacing: .06em; }
+.presentation-bar a { color: var(--yellow); }
+.presentation-images { max-width: 1400px; margin: auto; }
+.presentation-row { display: grid; }
+.presentation-collection { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 8px; }
+.presentation-image { display: block; width: 100%; min-width: 0; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
+.presentation-image img { display: block; width: 100%; height: auto; }
+.presentation-image:focus-visible { position: relative; z-index: 1; outline: 4px solid var(--yellow); outline-offset: -4px; }
+.presentation-lightbox { width: min(96vw, 1920px); max-width: 96vw; max-height: 96svh; padding: 0; border: 1px solid #444; background: #10131c; color: white; overscroll-behavior: contain; }
+.presentation-lightbox::backdrop { background: rgb(0 0 0 / .92); }
+.presentation-lightbox > img { display: block; width: 100%; height: auto; }
+.lightbox-toolbar { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem 1rem; background: #10131c; font-size: .8rem; z-index: 1; }
+.lightbox-toolbar > div { display: flex; gap: .5rem; }
+.lightbox-toolbar button { min-height: 44px; min-width: 44px; border: 1px solid #666; padding: .6rem; color: white; background: transparent; cursor: pointer; }
+body:has(.presentation-lightbox[open]) { overflow: hidden; }
+@media (max-width: 600px) {
+  .presentation-bar { flex-direction: column; }
+  .presentation-collection { grid-template-columns: 1fr; padding: 0; gap: 0; }
+}
 .case-next { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 3rem var(--pad); }
 .case-next a { font: 750 clamp(1.8rem, 4vw, 4rem)/1 'Archivo Variable'; letter-spacing: -.04em; }
 .motion-controls { margin-top: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; font-size: .65rem; letter-spacing: .06em; }

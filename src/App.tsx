@@ -10,6 +10,8 @@ import { Services } from './components/Services'
 import { Starburst } from './components/Starburst'
 import { Work } from './components/Work'
 import { ContactPage } from './pages/ContactPage'
+import { CreativeProjectPage } from './pages/CreativeProjectPage'
+import { behanceProjects } from './components/BehanceGallery'
 import { CreativePage } from './pages/CreativePage'
 import { DevelopmentPage } from './pages/DevelopmentPage'
 import { ProjectPage } from './pages/ProjectPage'
@@ -23,6 +25,7 @@ function App() {
   const [route, setRoute] = useState(readRoute)
   const [rawPath, query = ''] = route.split('?')
   const path = rawPath.replace(/\/$/, '') || '/'
+  const creativeProject = path.startsWith('/design/') ? behanceProjects.find(item => item.id === path.split('/')[2]) : undefined
   const previousPath = useRef(path)
   const project = path.startsWith('/work/') ? projects.find(item => item.id === path.split('/')[2]) : undefined
 
@@ -114,7 +117,7 @@ function App() {
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', description)
   }, [path, project])
 
-  const page = project ? <ProjectPage id={project.id} /> : path === '/development'
+  const page = creativeProject ? <CreativeProjectPage id={creativeProject.id} /> : project ? <ProjectPage id={project.id} /> : path === '/development'
     ? <DevelopmentPage />
       : path === '/design'
         ? <CreativePage />

@@ -1,3 +1,4 @@
+import { BehanceGallery } from '../components/BehanceGallery'
 import { projects } from '../data/projects'
 import { caseStudies } from '../data/case-studies'
 import { ProjectImage } from '../components/ProjectImage'
@@ -7,6 +8,7 @@ export function ProjectPage({ id }: { id: string }) {
   const project = projects.find(item => item.id === id)
   const study = caseStudies[id]
   if (!project || !study) return null
+  const galleryId = ({ wesal: 'wesal-identity', 'kroma-era': 'kroma-era', pain: 'pain' } as Record<string, string>)[id]
   const next = projects[(projects.indexOf(project) + 1) % projects.length]
   return <main className="inner-page case-page">
     <section className="case-hero section-dark">
@@ -21,7 +23,7 @@ export function ProjectPage({ id }: { id: string }) {
       <div className="reveal"><span className="eyebrow">02 / THE APPROACH</span><h2>THE IDEA,<br />MADE VISIBLE.</h2><p>{study.approach}</p></div>
       <div className="case-deliverables reveal"><span className="eyebrow">03 / PROJECT SCOPE</span><ul>{study.deliverables.map(item => <li key={item}>{item}</li>)}</ul></div>
     </section>
-    {study.gallery?.map(item => <figure className="case-gallery reveal" key={item.image}><ProjectImage src={assetPath(item.image)} alt={item.alt} sizes="100vw" /><figcaption>{item.alt}</figcaption></figure>)}
+    {galleryId ? <BehanceGallery id={galleryId} key={galleryId} /> : study.gallery?.map(item => <figure className="case-gallery reveal" key={item.image}><ProjectImage src={assetPath(item.image)} alt={item.alt} sizes="100vw" /><figcaption>{item.alt}</figcaption></figure>)}
     <section className="page-next page-next-yellow reveal"><span>HAVE SOMETHING SIMILAR IN MIND?</span><a href={routeHref(`/contact/?project=${project.id}`)}>LET’S BUILD YOURS <i>↗</i></a></section>
     <div className="case-next section-dark"><span className="eyebrow">NEXT PROJECT</span><a href={routeHref(`/work/${next.id}/`)}>{next.title} ↗</a></div>
   </main>

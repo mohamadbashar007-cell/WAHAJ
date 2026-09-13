@@ -1,11 +1,18 @@
 {
-  "/": { "title": "WAHAJ — Design × Code", "description": "WAHAJ creates brand identities, websites and applications. Independent design and development from Cairo, working everywhere." },
-  "/development": { "title": "Digital Development — WAHAJ", "description": "Explore websites, applications and platforms by WAHAJ, with project details and a clear design-to-development process." },
-  "/design": { "title": "Design, Editing & Motion — WAHAJ", "description": "Brand identity, editorial design and motion direction by WAHAJ. Explore selected visual work and creative services." },
-  "/contact": { "title": "Start a Project — WAHAJ", "description": "Tell WAHAJ about your next brand, website or application. Share a project brief and start the conversation." },
-  "/work/wesal": { "title": "WESAL — Selected Work — WAHAJ", "description": "Explore the Wesal travel identity and bilingual digital experience: the brief, visual direction and project scope." },
-  "/work/kroma-era": { "title": "KROMA ERA — Selected Work — WAHAJ", "description": "Explore Kroma Era, a fashion brand identity combining modern nostalgia, custom typography and editorial direction." },
-  "/work/zaman": { "title": "ZAMAN — Selected Work — WAHAJ", "description": "Explore Zaman, a bilingual corporate website for industrial supplies and food materials, designed and developed by WAHAJ." },
-  "/work/pain": { "title": "PAIN — Selected Work — WAHAJ", "description": "Explore PAIN, a university book-cover design study combining sculptural imagery, expressive typography and art direction." },
-  "/work/segybc": { "title": "SEGYBC — Selected Work — WAHAJ", "description": "Explore the Syrian Egyptian Business Council website, a bilingual institutional digital experience by WAHAJ." }
+  "/": {"title":"WAHAJ — Design × Code","description":"WAHAJ creates brand identities, websites and applications. Independent design and development from Cairo, working everywhere."},
+  "/development": {"title":"Digital Development — WAHAJ","description":"Explore websites, applications and platforms by WAHAJ, with project details and a clear design-to-development process."},
+  "/design": {"title":"Design, Editing & Motion — WAHAJ","description":"Brand identity, editorial design and motion direction by WAHAJ. Explore selected visual work and creative services."},
+  "/contact": {"title":"Start a Project — WAHAJ","description":"Tell WAHAJ about your next brand, website or application. Share a project brief and start the conversation."},
+  "/work/wesal": {"title":"WESAL — Selected Work — WAHAJ","description":"Explore the Wesal travel identity and bilingual digital experience: the brief, visual direction and project scope."},
+  "/work/kroma-era": {"title":"KROMA ERA — Selected Work — WAHAJ","description":"Explore Kroma Era, a fashion brand identity combining modern nostalgia, custom typography and editorial direction."},
+  "/work/zaman": {"title":"ZAMAN — Selected Work — WAHAJ","description":"Explore Zaman, a bilingual corporate website for industrial supplies and food materials, designed and developed by WAHAJ."},
+  "/work/pain": {"title":"PAIN — Selected Work — WAHAJ","description":"Explore PAIN, a university book-cover design study combining sculptural imagery, expressive typography and art direction."},
+  "/work/segybc": {"title":"SEGYBC — Selected Work — WAHAJ","description":"Explore the Syrian Egyptian Business Council website, a bilingual institutional digital experience by WAHAJ."},
+  "/design/social-media-posts": {"title":"Social media posts for instagram. — WAHAJ","description":"Explore the complete Social media posts for instagram. project by Mazen Magdy: all artwork, layouts and brand applications."},
+  "/design/vortex-retro-profile": {"title":"Retro profile company for 'Vortex®' — WAHAJ","description":"Explore the complete Retro profile company for 'Vortex®' project by Mazen Magdy: all artwork, layouts and brand applications."},
+  "/design/pain": {"title":"PAIN | A book cover design for university — WAHAJ","description":"Explore the complete PAIN | A book cover design for university project by Mazen Magdy: all artwork, layouts and brand applications."},
+  "/design/wesal-identity": {"title":"Wesal | logo identity — WAHAJ","description":"Explore the complete Wesal | logo identity project by Mazen Magdy: all artwork, layouts and brand applications."},
+  "/design/kroma-era": {"title":"KROMA ERA | clothing brand logo identity — WAHAJ","description":"Explore the complete KROMA ERA | clothing brand logo identity project by Mazen Magdy: all artwork, layouts and brand applications."},
+  "/design/vortex-company-profile": {"title":"Vortex company profile — WAHAJ","description":"Explore the complete Vortex company profile project by Mazen Magdy: all artwork, layouts and brand applications."},
+  "/design/personal-logo": {"title":"MY PERSONAL LOGO — WAHAJ","description":"Explore the complete MY PERSONAL LOGO project by Mazen Magdy: all artwork, layouts and brand applications."}
 }
