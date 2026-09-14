@@ -24,6 +24,7 @@ if (profile.user.profileProjects.pageInfo.hasNextPage) throw new Error('Profile 
 const slugs = { 242871303: 'social-media-posts', 242867009: 'vortex-retro-profile', 237818093: 'pain', 237709625: 'wesal-identity', 237263693: 'kroma-era', 235925833: 'vortex-company-profile', 235143861: 'personal-logo' }
 const result = []
 for (const project of profile.profileProjects) {
+  if (project.id === 235143861) continue // Personal branding is intentionally excluded from the site.
   const detail = (await state(project.url, project.id)).project.project
   const id = slugs[project.id]
   if (!id) throw new Error(`Assign a stable slug for ${project.name}`)

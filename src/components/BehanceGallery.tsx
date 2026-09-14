@@ -17,7 +17,7 @@ export function BehanceGallery({ id }: { id: string }) {
     dialog.current?.scrollTo({ top: 0, behavior: 'instant' })
   }
   return <section className="behance-presentation" aria-label={`${project.title} complete gallery`}>
-    <div className="presentation-bar"><span>THE COMPLETE PROJECT / {images.length} IMAGES</span><a href={project.url} target="_blank" rel="noreferrer">VIEW ON BEHANCE ↗</a></div>
+    <div className="presentation-bar"><span>THE COMPLETE PROJECT / {images.length} IMAGES</span></div>
     <div className="presentation-images">
       {project.rows.map((row, rowIndex) => {
         const start = offset

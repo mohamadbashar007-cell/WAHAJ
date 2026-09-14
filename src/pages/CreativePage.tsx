@@ -75,8 +75,6 @@ const portfolioWork = [
   },
 ]
 
-portfolioWork.push({ id: 'personal-logo', title: 'MY PERSONAL LOGO', category: 'PERSONAL IDENTITY', image: 'projects/behance/personal-logo/01-small.webp', imageAlt: 'Mazen Magdy personal logo', summary: 'A personal mark and its visual presentation.', focus: ['LOGO DESIGN', 'IDENTITY'] })
-
 const creativeProcess = [
   ['FIND THE IDEA', 'We identify the clearest concept the audience should feel and remember.'],
   ['BUILD THE WORLD', 'Type, color, image, composition and sound become one recognizable direction.'],

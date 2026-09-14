@@ -1101,25 +1101,5 @@
         }
       ]
     ]
-  },
-  {
-    "id": "personal-logo",
-    "behanceId": 235143861,
-    "title": "MY PERSONAL LOGO",
-    "url": "https://www.behance.net/gallery/235143861/MY-PERSONAL-LOGO",
-    "imageCount": 1,
-    "rows": [
-      [
-        {
-          "src": "projects/behance/personal-logo/01.webp",
-          "small": "projects/behance/personal-logo/01-small.webp",
-          "width": 1156,
-          "height": 736,
-          "smallWidth": 800,
-          "alt": "MY PERSONAL LOGO — image 1",
-          "source": "https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/29fbef235143861.68d182b94e1e1.jpg"
-        }
-      ]
-    ]
   }
 ]

@@ -41,6 +41,7 @@ try {
         await page.goto(`http://127.0.0.1:4175/${mount}design/${project.id}/`)
         await page.locator('h1').waitFor()
         assert.equal(await page.locator('.presentation-image').count(), project.imageCount)
+        assert.equal(await page.locator('a[href*="behance.net"]').count(), 0)
         assert.ok((await page.title()).includes(project.title))
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false)
         const first = page.locator('.presentation-image').first()
@@ -62,6 +63,8 @@ try {
   }
   await page.goto('http://127.0.0.1:4175/design/?section=visual-work')
   assert.equal(await page.locator('.portfolio-work-card').count(), projects.length)
+  assert.equal(await page.locator('a[href*="personal-logo"]').count(), 0)
+  assert.equal(await page.locator('a[href*="behance.net"]').count(), 0)
   await page.locator('.portfolio-work-image').first().click()
   await page.waitForURL('**/design/social-media-posts/')
   await page.goBack()
