@@ -28,7 +28,7 @@ All `VITE_` settings are public browser configuration. Never put provider API ke
 - `src/data/behance-projects.json`: complete galleries for the six selected projects from `behance.net/mazenmagdy29`, with ordered image rows, source URLs and dimensions. Images are hosted locally in `public/projects/behance/` with 800px and up-to-1920px WebP versions. Dedicated `/design/:project/` pages include keyboard-accessible enlargement; the existing Wesal, Kroma and Pain case studies share these galleries.
 - `node scripts/import-behance.mjs`: imports project images on Windows using curl and Sharp. Download cache lives in `artifacts/behance/`; remove cached HTML and `.image` files to refresh source data. The importer fails on unknown projects, pagination or unsupported modules instead of silently omitting content. `npm run images` skips these already-optimized galleries.
 - `node scripts/qa-behance.mjs`: verifies every gallery asset, direct project routes at domain and subdirectory roots, mobile/desktop layout, image counts, keyboard navigation and focus restoration against the production build.
-- The motion section remains a labeled WAHAJ identity animation study with a pause control. No client video, testimonials or team details have been added without source material.
+- The motion section remains a labeled WAHAJ identity animation study with automatic playback and reduced-motion support. No client video, testimonials or team details have been added without source material.
 
 ## Routes and verification
 

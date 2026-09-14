@@ -1,6 +1,5 @@
 import { behanceProjects } from '../components/BehanceGallery'
 import { projects } from '../data/projects'
-import { useState } from 'react'
 import { ProjectImage } from '../components/ProjectImage'
 import { Starburst } from '../components/Starburst'
 import { assetPath, routeHref } from '../lib/paths'
@@ -83,7 +82,6 @@ const creativeProcess = [
 ]
 
 export function CreativePage() {
-  const [motionPaused, setMotionPaused] = useState(false)
   const visualProjects = creativeCases.map((creativeCase) => ({
     ...projects.find((project) => project.id === creativeCase.id)!,
     focus: creativeCase.focus,
@@ -115,8 +113,8 @@ export function CreativePage() {
       </section>
 
       <section className="motion-stage section-dark" id="motion" aria-label="Motion design demonstration">
-        <div className="motion-stage-copy reveal"><span>MOTION IS A BRAND VOICE</span><h2>FRAME.<br />RHYTHM.<br /><i>IMPACT.</i></h2><p>Motion is designed from the same proportions, type and energy as the identity—so every transition still feels unmistakably on-brand.</p><div className="motion-controls"><span>WAHAJ / IDENTITY MOTION STUDY</span><button type="button" aria-pressed={motionPaused} onClick={() => setMotionPaused(!motionPaused)}>{motionPaused ? 'PLAY MOTION' : 'PAUSE MOTION'}</button></div></div>
-        <div className={`motion-reel reveal${motionPaused ? ' motion-is-paused' : ''}`} aria-hidden="true">
+        <div className="motion-stage-copy reveal"><span>MOTION IS A BRAND VOICE</span><h2>FRAME.<br />RHYTHM.<br /><i>IMPACT.</i></h2><p>Motion is designed from the same proportions, type and energy as the identity—so every transition still feels unmistakably on-brand.</p><div className="motion-controls"><span>WAHAJ / IDENTITY MOTION STUDY</span></div></div>
+        <div className="motion-reel reveal" aria-hidden="true">
           <div className="reel-frame frame-a"><Starburst tone="dark" /><span>01</span></div>
           <div className="reel-frame frame-b"><strong>MOVE</strong><span>02</span></div>
           <div className="reel-frame frame-c"><Starburst /><strong>WAHAJ</strong><span>03</span></div>
