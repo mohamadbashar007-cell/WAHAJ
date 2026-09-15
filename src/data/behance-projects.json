@@ -1101,5 +1101,40 @@
         }
       ]
     ]
+  },
+  {
+    "id": "durra-product-campaign",
+    "title": "DURRA / product campaign",
+    "imageCount": 3,
+    "rows": [
+      [
+        {
+          "src": "projects/optimized/creative-durra-social-hero-large.webp",
+          "small": "projects/optimized/creative-durra-social-hero-small.webp",
+          "width": 1600,
+          "height": 2143,
+          "smallWidth": 640,
+          "alt": "Durra Egyptian green olives campaign artwork with an olive jar and Arabic headline"
+        }
+      ],
+      [
+        {
+          "src": "projects/optimized/creative-durra-product-composition-large.webp",
+          "small": "projects/optimized/creative-durra-product-composition-small.webp",
+          "width": 1080,
+          "height": 1350,
+          "smallWidth": 640,
+          "alt": "Durra burger cucumbers product campaign with a dynamic jar composition"
+        },
+        {
+          "src": "projects/optimized/creative-durra-retail-scene-large.webp",
+          "small": "projects/optimized/creative-durra-retail-scene-small.webp",
+          "width": 1080,
+          "height": 1350,
+          "smallWidth": 640,
+          "alt": "Durra retail campaign showing a shopper choosing a product from the shelf"
+        }
+      ]
+    ]
   }
 ]

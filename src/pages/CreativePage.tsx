@@ -1,6 +1,7 @@
 import { behanceProjects } from '../components/BehanceGallery'
 import { projects } from '../data/projects'
 import { ProjectImage } from '../components/ProjectImage'
+import { MotionReel } from '../components/MotionReel'
 import { Starburst } from '../components/Starburst'
 import { assetPath, routeHref } from '../lib/paths'
 
@@ -18,6 +19,15 @@ const creativeCases = [
 ]
 
 const portfolioWork = [
+  {
+    id: 'durra-product-campaign',
+    title: 'DURRA',
+    category: 'PRODUCT CAMPAIGN / MOTION',
+    image: 'projects/creative/durra-social-hero.png',
+    imageAlt: 'Durra Egyptian green olives campaign with Arabic headline, olive jar and spoon',
+    summary: 'A product campaign that pairs Arabic-led copy, precise food styling and a rich green visual world across social stills and motion.',
+    focus: ['ART DIRECTION', 'SOCIAL CAMPAIGN', 'PRODUCT MOTION'],
+  },
   {
     id: 'social-media-posts',
     title: 'SOCIAL MEDIA POSTS',
@@ -113,12 +123,8 @@ export function CreativePage() {
       </section>
 
       <section className="motion-stage section-dark" id="motion" aria-label="Motion design demonstration">
-        <div className="motion-stage-copy reveal"><span>MOTION IS A BRAND VOICE</span><h2>FRAME.<br />RHYTHM.<br /><i>IMPACT.</i></h2><p>Motion is designed from the same proportions, type and energy as the identity—so every transition still feels unmistakably on-brand.</p><div className="motion-controls"><span>WAHAJ / IDENTITY MOTION STUDY</span></div></div>
-        <div className="motion-reel reveal" aria-hidden="true">
-          <div className="reel-frame frame-a"><Starburst tone="dark" /><span>01</span></div>
-          <div className="reel-frame frame-b"><strong>MOVE</strong><span>02</span></div>
-          <div className="reel-frame frame-c"><Starburst /><strong>WAHAJ</strong><span>03</span></div>
-        </div>
+        <div className="motion-stage-copy reveal"><span>MOTION IS A BRAND VOICE</span><h2>FRAME.<br />RHYTHM.<br /><i>IMPACT.</i></h2><p>Durra’s product world becomes a compact social reel: an Arabic hook, dimensional food imagery and a precise green palette built around the pack.</p><div className="motion-controls"><span>DURRA / PRODUCT CAMPAIGN / MOTION REEL</span></div></div>
+        <MotionReel />
       </section>
 
       <section className="portfolio-work section-dark" id="visual-work">

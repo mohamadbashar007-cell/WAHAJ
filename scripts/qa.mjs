@@ -5,7 +5,7 @@ import path from 'node:path'
 import assert from 'node:assert/strict'
 
 await mkdir('artifacts/refinement', { recursive: true })
-const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.webp': 'image/webp', '.png': 'image/png', '.woff2': 'font/woff2' }
+const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.webp': 'image/webp', '.png': 'image/png', '.mp4': 'video/mp4', '.woff2': 'font/woff2' }
 const server = createServer(async (req, res) => {
   try {
     let pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname).replace(/^\/wahaj\//, '/')
@@ -22,7 +22,7 @@ const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, re
 const errors = []
 page.on('pageerror', error => errors.push(error.message))
 const results = []
-const routes = ['', 'development/', 'design/', 'contact/', 'work/wesal/', 'work/kroma-era/', 'work/zaman/', 'work/pain/', 'work/segybc/']
+const routes = ['', 'development/', 'design/', 'design/durra-product-campaign/', 'contact/', 'work/wesal/', 'work/kroma-era/', 'work/zaman/', 'work/pain/', 'work/segybc/']
 try {
   for (const mount of ['', 'wahaj/']) {
     for (const route of routes) {
@@ -100,11 +100,11 @@ try {
   await page.waitForTimeout(1100)
   await page.screenshot({ path: 'artifacts/refinement/home-motion-1440.png' })
   await page.goto('http://127.0.0.1:4173/design/')
-  assert.equal(await page.locator('.motion-controls button').count(), 0)
-  assert.equal(await page.locator('.frame-a').evaluate(el => getComputedStyle(el).animationPlayState), 'running')
+  assert.equal(await page.locator('.motion-reel-caption button').count(), 1)
+  assert.equal(await page.locator('.motion-video').evaluate(video => video.muted), true)
   assert.equal(await page.locator('.footer-social a').count(), 3)
   assert.match(await page.locator('link[rel="icon"]').getAttribute('href'), /wahaj-star\.png$/)
   assert.deepEqual(errors, [])
   await writeFile('artifacts/refinement/qa-results.json', JSON.stringify({ entries: results, widths: [320, 390, 768, 1440], menu: 'passed', legacyLinks: 'passed', projectEnquiry: 'passed', draftDownload: 'passed', coloredCursor: 'passed', errors }, null, 2))
-  console.log('PASS: 18 static entries, 36 responsive layouts, menu/focus, legacy links, project enquiry, draft/download and colored cursor.')
+  console.log('PASS: 20 static entries, 40 responsive layouts, menu/focus, legacy links, project enquiry, draft/download and colored cursor.')
 } finally { await browser.close(); await new Promise(resolve => server.close(resolve)) }

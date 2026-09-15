@@ -24,6 +24,24 @@ export const imageManifest = {
     "width": 1200,
     "height": 1200
   },
+  "projects/creative/durra-product-composition.png": {
+    "large": "projects/optimized/creative-durra-product-composition-large.webp",
+    "small": "projects/optimized/creative-durra-product-composition-small.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  "projects/creative/durra-retail-scene.png": {
+    "large": "projects/optimized/creative-durra-retail-scene-large.webp",
+    "small": "projects/optimized/creative-durra-retail-scene-small.webp",
+    "width": 1080,
+    "height": 1350
+  },
+  "projects/creative/durra-social-hero.png": {
+    "large": "projects/optimized/creative-durra-social-hero-large.webp",
+    "small": "projects/optimized/creative-durra-social-hero-small.webp",
+    "width": 1600,
+    "height": 2143
+  },
   "projects/creative/healthcare-fmcg-campaign.jpg": {
     "large": "projects/optimized/creative-healthcare-fmcg-campaign-large.webp",
     "small": "projects/optimized/creative-healthcare-fmcg-campaign-small.webp",
@@ -47,6 +65,12 @@ export const imageManifest = {
     "small": "projects/optimized/creative-pain-book-cover-small.webp",
     "width": 808,
     "height": 632
+  },
+  "projects/creative/personal-logo.jpg": {
+    "large": "projects/optimized/creative-personal-logo-large.webp",
+    "small": "projects/optimized/creative-personal-logo-small.webp",
+    "width": 1156,
+    "height": 736
   },
   "projects/creative/showreel-2024.jpg": {
     "large": "projects/optimized/creative-showreel-2024-large.webp",
