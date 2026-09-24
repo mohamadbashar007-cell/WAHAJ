@@ -25,7 +25,7 @@ export function ProjectPreview({ project, index }: { project: Project; index: nu
 
   return (
     <article className={`project project-${index + 1} tone-${project.tone} reveal`}>
-      <a href={href(`/work/${project.id}/`)} className="project-link" data-cursor={t('VIEW', 'شاهد')}>{content}</a>
+      <a href={href(project.detailPath || `/work/${project.id}/`)} className="project-link" data-cursor={t('VIEW', 'شاهد')}>{content}</a>
     </article>
   )
 }

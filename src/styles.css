@@ -89,6 +89,7 @@ img { display: block; max-width: 100%; }
 
 .marquee { position: relative; width: 100%; max-width: 100vw; overflow: hidden; contain: paint; color: var(--navy); background: var(--yellow); border-block: 1px solid var(--navy); }
 .marquee div { display: flex; width: max-content; align-items: center; padding: .85rem 0; font: 760 clamp(.8rem, 1.4vw, 1.2rem)/1 'Archivo Variable'; letter-spacing: .06em; animation: marquee 24s linear infinite; }
+.marquee-group { display: flex; flex: 0 0 auto; min-width: 100vw; align-items: center; justify-content: space-around; }
 .marquee-item { display: inline-flex; align-items: center; }
 .marquee-item .starburst { width: clamp(14px, 1.4vw, 20px); margin: 0 1rem; }
 @keyframes marquee { to { transform: translateX(-33.333%); } }
@@ -660,6 +661,8 @@ html[lang='ar'] h2 { font-weight: 750; }
 html[lang='ar'] h3 { font-weight: 700; }
 html[lang='ar'] .hero-title { font-size: clamp(4.2rem, 9.2vw, 9rem); line-height: 1.12; }
 html[lang='ar'] .hero-index { right: auto; left: var(--pad); }
+html[lang='ar'] .marquee { direction: ltr; }
+html[lang='ar'] .marquee-item { direction: rtl; }
 html[lang='ar'] .development-hero .page-hero-mark { right: auto; left: 4vw; }
 html[lang='ar'] .creative-hero .page-hero-mark { right: auto; left: 8vw; }
 html[lang='ar'] .contact-page-mark { right: auto; left: 8vw; }

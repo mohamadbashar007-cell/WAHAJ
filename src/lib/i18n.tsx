@@ -40,6 +40,12 @@ export function arabicImageCount(count: number) {
 }
 
 export const projectArabic: Record<string, { title?: string; category: string; summary: string; imageAlt: string }> = {
+  'durra-product-campaign': {
+    title: 'الدرة',
+    category: 'حملة منتج / موشن',
+    summary: 'تصاميم ثابتة وموشن لحملة زيتون الدرة الأخضر المصري.',
+    imageAlt: 'حملة زيتون الدرة الأخضر مع العبوة والنص العربي',
+  },
   wesal: {
     title: 'وصال',
     category: 'هوية بصرية / تجربة رقمية',

@@ -12,6 +12,7 @@ export type Project = {
   source: 'Live site' | 'Selected work'
   tone: 'light' | 'dark' | 'warm'
   featured: boolean
+  detailPath?: string
 }
 
 export const projects: Project[] = [
@@ -78,6 +79,20 @@ export const projects: Project[] = [
     featured: true,
   },
 ]
+
+export const homepageProjects: Project[] = projects.map((project) => project.id === 'pain' ? {
+  id: 'durra-product-campaign',
+  number: project.number,
+  title: 'DURRA',
+  category: 'PRODUCT CAMPAIGN / MOTION',
+  summary: 'Social stills and product motion for Durra’s Egyptian green olives campaign.',
+  image: assetPath('/projects/creative/durra-social-hero.png'),
+  imageAlt: 'Durra Egyptian green olives campaign with Arabic headline, olive jar and spoon',
+  source: 'Selected work',
+  tone: 'warm',
+  featured: true,
+  detailPath: '/design/durra-product-campaign/',
+} : project)
 
 export const additionalProjects: Array<{ title: string; type: string; path: string }> = [
   { title: 'PHONICS ADVENTURE', type: 'LEARNING EXPERIENCE', path: '/development?section=phonics' },

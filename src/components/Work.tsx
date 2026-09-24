@@ -1,4 +1,4 @@
-import { additionalProjects, projects } from '../data/projects'
+import { additionalProjects, homepageProjects } from '../data/projects'
 import { ProjectPreview } from './ProjectPreview'
 import { useLocale } from '../lib/i18n'
 
@@ -17,7 +17,7 @@ export function Work() {
         <p>{t('Identity, web and product work.', 'هويات، ومواقع، ومنتجات رقمية.')}</p>
       </div>
       <div className="project-list">
-        {projects.map((project, index) => <ProjectPreview key={project.id} project={project} index={index} />)}
+        {homepageProjects.map((project, index) => <ProjectPreview key={project.id} project={project} index={index} />)}
       </div>
       <div className="project-index reveal" aria-labelledby="more-work-title">
         <span className="eyebrow" id="more-work-title">{t('MORE PROJECTS', 'مشاريع أخرى')}</span>

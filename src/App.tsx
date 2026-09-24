@@ -152,8 +152,12 @@ function App() {
         <Hero />
         <div className="marquee" aria-hidden="true">
           <div>
-            {[...(isArabic ? marqueeItemsArabic : marqueeItems), ...(isArabic ? marqueeItemsArabic : marqueeItems), ...(isArabic ? marqueeItemsArabic : marqueeItems)].map((item, index) => (
-              <span className="marquee-item" key={`${item}-${index}`}>{item}<Starburst tone="dark" /></span>
+            {[0, 1, 2].map((group) => (
+              <span className="marquee-group" key={group}>
+                {(isArabic ? marqueeItemsArabic : marqueeItems).map((item) => (
+                  <span className="marquee-item" key={`${group}-${item}`}>{item}<Starburst tone="dark" /></span>
+                ))}
+              </span>
             ))}
           </div>
         </div>
