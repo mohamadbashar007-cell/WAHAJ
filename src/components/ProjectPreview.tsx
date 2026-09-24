@@ -1,29 +1,31 @@
 import type { Project } from '../data/projects'
-import { routeHref } from '../lib/paths'
 import { ProjectImage } from './ProjectImage'
+import { projectArabic, useLocale } from '../lib/i18n'
 
 export function ProjectPreview({ project, index }: { project: Project; index: number }) {
+  const { isArabic, t, href } = useLocale()
+  const localized = isArabic ? projectArabic[project.id] : undefined
   const content = (
     <>
       <div className="project-heading">
         <span className="project-number">({project.number})</span>
         <div>
-          <h3>{project.title}</h3>
-          <p>{project.category}</p>
+          <h3>{localized?.title || project.title}</h3>
+          <p>{localized?.category || project.category}</p>
         </div>
         <span className="project-arrow" aria-hidden="true">↗</span>
       </div>
       <div className="project-visual">
-        <ProjectImage src={project.image} alt={project.imageAlt} />
-        <span className="project-source">EXPLORE PROJECT ↗</span>
+        <ProjectImage src={project.image} alt={localized?.imageAlt || project.imageAlt} />
+        <span className="project-source">{t('EXPLORE PROJECT', 'استكشف المشروع')} ↗</span>
       </div>
-      <p className="project-summary">{project.summary}</p>
+      <p className="project-summary">{localized?.summary || project.summary}</p>
     </>
   )
 
   return (
     <article className={`project project-${index + 1} tone-${project.tone} reveal`}>
-      <a href={routeHref(`/work/${project.id}/`)} className="project-link" data-cursor="VIEW">{content}</a>
+      <a href={href(`/work/${project.id}/`)} className="project-link" data-cursor={t('VIEW', 'شاهد')}>{content}</a>
     </article>
   )
 }

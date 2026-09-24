@@ -3,14 +3,17 @@ const pages = JSON.parse(await readFile('src/data/page-meta.json', 'utf8'))
 const original = await readFile('dist/index.html', 'utf8')
 const escape = value => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;')
 function render(meta, base) {
+  const isArabic = meta.lang === 'ar'
   return original
+    .replace('<html lang="en">', isArabic ? '<html lang="ar" dir="rtl">' : '<html lang="en">')
     .replace('<base href="/" />', `<base href="${base}" />`)
     .replace(/<title>.*?<\/title>/, `<title>${escape(meta.title)}</title>`)
     .replace(/(<meta name="description" content=")[^"]*/, `$1${escape(meta.description)}`)
     .replace(/(<meta property="og:title" content=")[^"]*/, `$1${escape(meta.title)}`)
     .replace(/(<meta property="og:description" content=")[^"]*/, `$1${escape(meta.description)}`)
 }
-for (const [route, meta] of Object.entries(pages)) {
+for (const [route, pageMeta] of Object.entries(pages)) {
+  const meta = { ...pageMeta, lang: route === '/ar' || route.startsWith('/ar/') ? 'ar' : 'en' }
   const parts = route.split('/').filter(Boolean)
   const directory = `dist/${parts.join('/')}`
   await mkdir(directory, { recursive: true })

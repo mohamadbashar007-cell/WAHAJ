@@ -18,15 +18,18 @@ import { ProjectPage } from './pages/ProjectPage'
 import { projects } from './data/projects'
 import pageMeta from './data/page-meta.json'
 import { appBase, readRoute, routeHref } from './lib/paths'
+import { LocaleProvider, localeHref, parseLocalizedRoute } from './lib/i18n'
 
-const marqueeItems = ['STRATEGY', 'IDENTITY', 'INTERFACE', 'CODE', 'IMPACT']
+const marqueeItems = ['STRATEGY', 'IDENTITY', 'INTERFACE', 'CODE', 'EDIT']
+const marqueeItemsArabic = ['استراتيجية', 'هوية', 'واجهات', 'برمجة', 'مونتاج']
 
 function App() {
   const [route, setRoute] = useState(readRoute)
-  const [rawPath, query = ''] = route.split('?')
-  const path = rawPath.replace(/\/$/, '') || '/'
+  const { locale, path, query } = parseLocalizedRoute(route)
+  const isArabic = locale === 'ar'
+  const metaPath = isArabic ? (path === '/' ? '/ar' : `/ar${path}`) : path
   const creativeProject = path.startsWith('/design/') ? behanceProjects.find(item => item.id === path.split('/')[2]) : undefined
-  const previousPath = useRef(path)
+  const previousPath = useRef(metaPath)
   const project = path.startsWith('/work/') ? projects.find(item => item.id === path.split('/')[2]) : undefined
 
   useEffect(() => {
@@ -93,29 +96,32 @@ function App() {
     const frame = requestAnimationFrame(() => {
       if (section) document.getElementById(section)?.scrollIntoView({ block: 'start' })
       else window.scrollTo({ top: 0, behavior: 'instant' })
-      if (previousPath.current !== path) {
+      if (previousPath.current !== metaPath) {
         const main = document.querySelector('main')
         main?.setAttribute('tabindex', '-1')
         main?.focus({ preventScroll: true })
       }
-      previousPath.current = path
+      previousPath.current = metaPath
     })
     return () => cancelAnimationFrame(frame)
-  }, [route, query, path])
+  }, [route, query, metaPath])
 
   useEffect(() => {
     document.body.classList.toggle('contact-route', path === '/contact')
-    return () => document.body.classList.remove('contact-route')
-  }, [path])
+    document.body.classList.toggle('arabic-route', isArabic)
+    document.documentElement.lang = isArabic ? 'ar' : 'en'
+    document.documentElement.dir = isArabic ? 'rtl' : 'ltr'
+    return () => { document.body.classList.remove('contact-route', 'arabic-route') }
+  }, [path, isArabic])
 
   useEffect(() => {
-    const meta = pageMeta[path as keyof typeof pageMeta]
-    document.title = meta?.title ?? 'Page not found — WAHAJ'
-    const description = meta?.description ?? 'Explore selected work and services by WAHAJ.'
+    const meta = pageMeta[metaPath as keyof typeof pageMeta]
+    document.title = meta?.title ?? (isArabic ? 'الصفحة غير موجودة — وهج' : 'Page not found — WAHAJ')
+    const description = meta?.description ?? (isArabic ? 'استكشف أعمال وخدمات وهج المختارة.' : 'Explore selected work and services by WAHAJ.')
     document.querySelector('meta[name="description"]')?.setAttribute('content', description)
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', document.title)
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', description)
-  }, [path, project])
+  }, [metaPath, project, isArabic])
 
   const page = creativeProject ? <CreativeProjectPage id={creativeProject.id} /> : project ? <ProjectPage id={project.id} /> : path === '/development'
     ? <DevelopmentPage />
@@ -123,30 +129,30 @@ function App() {
         ? <CreativePage />
         : path === '/contact'
           ? <ContactPage />
-          : path !== '/' ? <main className="case-hero section-dark"><p className="eyebrow">404 / LOST THE SPARK?</p><h1>LET’S GET<br />YOU BACK.</h1><a className="text-link" href={routeHref('/')}>BACK TO HOME ↗</a></main> : null
+          : path !== '/' ? <main className="case-hero section-dark"><p className="eyebrow">404 / {isArabic ? 'الصفحة غير موجودة' : 'PAGE NOT FOUND'}</p><h1>{isArabic ? <>هذه الصفحة<br />غير موجودة.</> : <>PAGE NOT<br />FOUND.</>}</h1><a className="text-link" href={localeHref('/', locale)}>{isArabic ? 'العودة للرئيسية' : 'BACK TO HOME'} ↗</a></main> : null
 
   if (page) {
     return (
-      <>
-        <a className="skip-link" href="#main-content">Skip to content</a>
+      <LocaleProvider locale={locale}>
+        <a className="skip-link" href="#main-content">{isArabic ? 'تخطَّ إلى المحتوى' : 'Skip to content'}</a>
         <Cursor />
         <Nav path={path} />
         <div id="main-content">{page}</div>
         <Footer />
-      </>
+      </LocaleProvider>
     )
   }
 
   return (
-    <>
-      <a className="skip-link" href="#main-content">Skip to content</a>
+    <LocaleProvider locale={locale}>
+      <a className="skip-link" href="#main-content">{isArabic ? 'تخطَّ إلى المحتوى' : 'Skip to content'}</a>
       <Cursor />
       <Nav path={path} />
       <main id="main-content" tabIndex={-1}>
         <Hero />
         <div className="marquee" aria-hidden="true">
           <div>
-            {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, index) => (
+            {[...(isArabic ? marqueeItemsArabic : marqueeItems), ...(isArabic ? marqueeItemsArabic : marqueeItems), ...(isArabic ? marqueeItemsArabic : marqueeItems)].map((item, index) => (
               <span className="marquee-item" key={`${item}-${index}`}>{item}<Starburst tone="dark" /></span>
             ))}
           </div>
@@ -158,7 +164,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </LocaleProvider>
   )
 }
 

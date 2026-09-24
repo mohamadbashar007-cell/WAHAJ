@@ -1,14 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { Starburst } from './Starburst'
-import { assetPath, routeHref } from '../lib/paths'
-
-const links = [
-  ['WORK', routeHref('/?section=work')],
-  ['DEVELOPMENT', routeHref('/development')],
-  ['DESIGN + MOTION', routeHref('/design')],
-]
+import { assetPath } from '../lib/paths'
+import { localeHref, useLocale } from '../lib/i18n'
 
 export function Nav({ path }: { path: string }) {
+  const { isArabic, t, href } = useLocale()
   const [open, setOpen] = useState(false)
   const header = useRef<HTMLElement>(null)
   const toggle = useRef<HTMLButtonElement>(null)
@@ -19,6 +15,15 @@ export function Nav({ path }: { path: string }) {
     document.body.classList.toggle('menu-open', open)
     return () => document.body.classList.remove('menu-open')
   }, [open])
+
+  const links = [
+    [t('WORK', 'الأعمال'), '/?section=work'],
+    [t('DEVELOPMENT', 'التطوير'), '/development'],
+    [t('DESIGN + MOTION', 'التصميم + موشن'), '/design'],
+    [t('CONTACT', 'تواصل معنا'), '/contact'],
+  ]
+  const alternateLocale = isArabic ? 'en' : 'ar'
+  const alternatePath = localeHref(`${path}${window.location.search}`, alternateLocale)
 
   useEffect(() => {
     if (!open) return
@@ -41,18 +46,19 @@ export function Nav({ path }: { path: string }) {
 
   return (
     <header className="site-header" ref={header}>
-      <a className="nav-brand" href={routeHref('/')} aria-label="WAHAJ home" onClick={() => setOpen(false)}>
+      <a className="nav-brand" href={href('/')} aria-label={t('WAHAJ home', 'الصفحة الرئيسية لوهج')} onClick={() => setOpen(false)}>
         <span className="brand-wordmark"><img src={assetPath('/wahaj-logo.png')} alt="WAHAJ" /></span>
       </a>
       <button ref={toggle} className="menu-button" type="button" aria-expanded={open} aria-controls="site-menu" onClick={() => setOpen(!open)}>
-        <span>{open ? 'CLOSE' : 'MENU'}</span>
+        <span>{open ? t('CLOSE', 'إغلاق') : t('MENU', 'القائمة')}</span>
         <Starburst className="menu-mark" />
       </button>
-      <nav id="site-menu" className={open ? 'nav-links is-open' : 'nav-links'} aria-label="Primary navigation">
-        {links.map(([label, href]) => (
-          <a key={href} href={href} aria-current={(label === 'WORK' ? path.startsWith('/work/') : href === routeHref(path)) ? 'page' : undefined} onClick={() => setOpen(false)}>{label}</a>
+      <nav id="site-menu" className={open ? 'nav-links is-open' : 'nav-links'} aria-label={t('Primary navigation', 'التنقل الرئيسي')}>
+        {links.map(([label, route]) => (
+          <a key={route} href={href(route)} aria-current={(route.startsWith('/?') ? path.startsWith('/work/') : path === route) ? 'page' : undefined} onClick={() => setOpen(false)}>{label}</a>
         ))}
-        <a className="nav-cta" href={routeHref('/contact')} aria-current={path === '/contact' ? 'page' : undefined} onClick={() => setOpen(false)}>START A PROJECT <span>↗</span></a>
+        <a className="language-switch" href={alternatePath} hrefLang={alternateLocale} lang={alternateLocale} onClick={() => setOpen(false)}>{isArabic ? 'EN' : 'عربي'}</a>
+        <a className="nav-cta" href={href('/contact')} aria-current={path === '/contact' ? 'page' : undefined} onClick={() => setOpen(false)}>{t('START A PROJECT', 'ابدأ مشروعًا')} <span>↗</span></a>
       </nav>
     </header>
   )

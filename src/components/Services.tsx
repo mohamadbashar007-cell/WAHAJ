@@ -1,25 +1,29 @@
-import { routeHref } from '../lib/paths'
-
-const services = [
-  ['01', 'BRAND DIRECTION', 'Strategy, visual identity, art direction and systems that make a brand unmistakable.', routeHref('/design')],
-  ['02', 'DIGITAL DESIGN', 'Web design, UI/UX and product experiences where every detail earns its place.', routeHref('/design?section=services')],
-  ['03', 'DEVELOPMENT', 'Fast, responsive websites and interactive builds with craft beneath the surface.', routeHref('/development')],
-  ['04', 'CREATIVE PARTNERSHIP', 'Campaign concepts, launch moments and ongoing collaboration from first spark to release.', routeHref('/contact')],
-]
-
 import { Starburst } from './Starburst'
+import { useLocale } from '../lib/i18n'
 
 export function Services() {
+  const { isArabic, t, href } = useLocale()
+  const services = isArabic ? [
+    ['01', 'توجيه العلامة', 'استراتيجية العلامة، والهوية البصرية، والإخراج الفني، ودليل الاستخدام.', '/design'],
+    ['02', 'التصميم الرقمي', 'تصميم المواقع، وتجربة المستخدم، وواجهات المنتجات.', '/design?section=services'],
+    ['03', 'التطوير', 'مواقع متجاوبة، وتطبيقات ويب وموبايل.', '/development'],
+    ['04', 'شراكة إبداعية', 'أفكار الحملات، ومواد الإطلاق، ودعم تصميمي مستمر.', '/contact'],
+  ] : [
+    ['01', 'BRAND DIRECTION', 'Brand strategy, visual identity, art direction and guidelines.', '/design'],
+    ['02', 'DIGITAL DESIGN', 'Web design, UI/UX and product interface design.', '/design?section=services'],
+    ['03', 'DEVELOPMENT', 'Responsive websites, web applications and mobile apps.', '/development'],
+    ['04', 'CREATIVE PARTNERSHIP', 'Campaign concepts, launch assets and ongoing design support.', '/contact'],
+  ]
   return (
     <section id="services" className="services-section section-dark" aria-labelledby="services-title">
       <header className="services-header reveal">
-        <span className="eyebrow">02 / WHAT WE DO</span>
-        <h2 id="services-title">FROM FIRST<br /><span>SPARK</span> TO SHIP.</h2>
+        <span className="eyebrow">02 / {t('WHAT WE DO', 'ماذا نقدّم')}</span>
+        <h2 id="services-title">{t(<><span>DESIGN</span> +<br />DEVELOPMENT.</>, <><span>تصميم</span> +<br />تطوير.</>)}</h2>
         <Starburst className="services-burst" />
       </header>
       <div className="services-list">
-        {services.map(([number, title, description, href]) => (
-          <a href={href} key={number} className="service-row reveal" data-cursor="OPEN">
+        {services.map(([number, title, description, route]) => (
+          <a href={href(route)} key={number} className="service-row reveal" data-cursor={t('OPEN', 'افتح')}>
             <span>{number}</span>
             <h3>{title}</h3>
             <p>{description}</p>

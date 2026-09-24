@@ -1,9 +1,24 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { assetPath } from '../lib/paths'
+import { useLocale } from '../lib/i18n'
 
-export function MotionReel() {
+type MotionReelProps = {
+  source?: string
+  poster?: string
+  label?: string
+  ariaLabel?: string
+  variant?: 'brand' | 'durra'
+}
+
+export function MotionReel({
+  source = '/projects/motion/wahaj-brand-motion.mp4',
+  poster = '/projects/motion/wahaj-brand-motion-poster.png',
+  label,
+  ariaLabel,
+  variant = 'brand',
+}: MotionReelProps) {
+  const { t } = useLocale()
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [isPlaying, setIsPlaying] = useState(false)
 
   useEffect(() => {
     const video = videoRef.current
@@ -13,10 +28,9 @@ export function MotionReel() {
     const syncPlayback = () => {
       if (reducedMotion.matches) {
         video.pause()
-        setIsPlaying(false)
         return
       }
-      void video.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false))
+      void video.play().catch(() => {})
     }
 
     syncPlayback()
@@ -27,19 +41,8 @@ export function MotionReel() {
     }
   }, [])
 
-  const togglePlayback = () => {
-    const video = videoRef.current
-    if (!video) return
-    if (video.paused) {
-      void video.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false))
-    } else {
-      video.pause()
-      setIsPlaying(false)
-    }
-  }
-
   return (
-    <div className="motion-reel reveal">
+    <div className={`motion-reel motion-reel--${variant} reveal`}>
       <video
         ref={videoRef}
         className="motion-video"
@@ -47,18 +50,13 @@ export function MotionReel() {
         loop
         playsInline
         preload="metadata"
-        poster={assetPath('/projects/optimized/creative-durra-social-hero-large.webp')}
-        aria-label="Durra product campaign motion reel"
-        onPlay={() => setIsPlaying(true)}
-        onPause={() => setIsPlaying(false)}
+        poster={assetPath(poster)}
+        aria-label={ariaLabel || t('WAHAJ brand motion reel', 'فيديو موشن لهوية وهج')}
       >
-        <source src={assetPath('/projects/motion/durra-product-reel.mp4')} type="video/mp4" />
+        <source src={assetPath(source)} type="video/mp4" />
       </video>
       <div className="motion-reel-caption">
-        <span>01 / DURRA — PRODUCT REEL</span>
-        <button type="button" onClick={togglePlayback} aria-pressed={isPlaying}>
-          {isPlaying ? 'PAUSE REEL' : 'PLAY REEL'}
-        </button>
+        <span>{label || t('01 / WAHAJ — BRAND MOTION', '01 / وهج — موشن الهوية')}</span>
       </div>
     </div>
   )
